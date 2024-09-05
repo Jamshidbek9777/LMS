@@ -1,9 +1,9 @@
+import Header from "@/components/header/header";
 
-export default function Home() {
+export default function RootPage() {
   return (
-   <div>
-<h1>LMS</h1>
-   </div>
-   
+    <>
+      <Header />
+    </>
   );
 }
