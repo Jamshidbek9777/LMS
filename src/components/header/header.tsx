@@ -1,13 +1,16 @@
 "use client";
 
 import styled from "styled-components";
+import { Container } from "../container/container";
 
 export const Header = () => {
   return (
-    <Wrapper>
-      <h1>Logo</h1>
-      <h1>Login</h1>
-    </Wrapper>
+    <Container>
+      <Wrapper>
+        <h1>Logo</h1>
+        <h1>Login</h1>
+      </Wrapper>
+    </Container>
   );
 };
 
