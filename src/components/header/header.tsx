@@ -2,13 +2,14 @@
 
 import styled from "styled-components";
 import { Container } from "../container/container";
+import { Button } from "antd";
 
 export const Header = () => {
   return (
     <Container>
       <Wrapper>
         <h1>Logo</h1>
-        <h1>Login</h1>
+        <Button type="primary">About me</Button>
       </Wrapper>
     </Container>
   );
