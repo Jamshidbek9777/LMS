@@ -1,24 +1,31 @@
 "use client";
 
-import styled from "styled-components";
-import { Container } from "../container/container";
-import { Button } from "antd";
+import { useRouter } from "next/navigation";
+import { Container } from "@/components";
+import { InfoButton, Wrapper } from "./style";
 
 export const Header = () => {
+  const router = useRouter();
+
   return (
-    <Container>
-      <Wrapper>
-        <h1>Logo</h1>
-        <Button type="primary">About me</Button>
-      </Wrapper>
-    </Container>
+    <>
+      <Container>
+        <Wrapper>
+          <p
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            TATU LMS <img src="/images/TATU_logotip.png" width={70} alt="" />{" "}
+          </p>
+
+          <InfoButton type="primary">About me</InfoButton>
+        </Wrapper>
+      </Container>
+    </>
   );
 };
 
 export default Header;
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid red;
-`;
