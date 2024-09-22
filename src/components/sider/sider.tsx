@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 
-import { Menu, MenuProps } from "antd";
+import { MenuProps } from "antd";
 import { menuItems } from "./menuItems";
-import { LayoutSider } from "../style";
+import { AntMenu, LayoutSider } from "../style";
 
 const menuItemsTyped: MenuProps["items"] = menuItems.map(
   ({ id, key, icon, name }) => ({
@@ -16,8 +16,8 @@ const menuItemsTyped: MenuProps["items"] = menuItems.map(
 
 export const Sider = () => {
   return (
-    <LayoutSider>
-      <Menu items={menuItemsTyped}></Menu>
+    <LayoutSider width={250}>
+      <AntMenu mode="inline" theme="light" items={menuItemsTyped}></AntMenu>
     </LayoutSider>
   );
 };

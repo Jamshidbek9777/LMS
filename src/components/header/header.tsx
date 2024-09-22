@@ -18,7 +18,7 @@ export const Header = () => {
               alignItems: "center",
             }}
           >
-            TATU LMS <img src="/images/TATU_logotip.png" width={70} alt="" />{" "}
+            LMS <img src="/images/TATU_logotip.png" width={70} alt="" />{" "}
           </p>
 
           <InfoButton type="primary">About me</InfoButton>
