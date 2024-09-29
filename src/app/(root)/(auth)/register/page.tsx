@@ -51,7 +51,7 @@ const Register = () => {
     <Wrapper>
       <Container style={{ width: "100%", margin: "0 20px" }}>
         <Flex vertical align="center">
-          <LoginTitle>Ro'yxatdan o'tish</LoginTitle>
+          <LoginTitle>Ro&#39;yxatdan o&#39;tish</LoginTitle>
 
           <StyledForm
             name="basic"

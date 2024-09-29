@@ -87,7 +87,7 @@ const Login = () => {
               </SubmitButton>
             </Form.Item>
           </StyledForm>
-          <Helper>Hisobingiz yo'qmi ? Ro'yxatdan o'tish</Helper>
+          <Helper>Hisobingiz yo&#39;qmi ? Ro&#39;yxatdan o&#39;tish</Helper>
         </Flex>
       </Container>
     </Wrapper>
