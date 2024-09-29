@@ -6,24 +6,30 @@ import { Header } from "@/components";
 import { Sider } from "@/components";
 import { Content } from "@/components";
 import { Layout as AntdLayout } from "antd";
-import { StyledComponentsRegistry } from "@/services";
+import { AntdProvider, StyledComponentsRegistry } from "@/services";
 
 export const ClientLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
-  const isLoginPage = pathname === "/login";
+  const isLoginPage = pathname === "/login" || "/register";
 
   return isLoginPage ? (
-    <Content>{children}</Content>
+    <StyledComponentsRegistry>
+      <AntdProvider>
+        <Content>{children}</Content>
+      </AntdProvider>
+    </StyledComponentsRegistry>
   ) : (
     <StyledComponentsRegistry>
-      <Header />
-      <AntdLayout hasSider>
-        <Sider />
-        <AntdLayout>
-          <Content>{children}</Content>
+      <AntdProvider>
+        <Header />
+        <AntdLayout hasSider>
+          <Sider />
+          <AntdLayout>
+            <Content>{children}</Content>
+          </AntdLayout>
         </AntdLayout>
-      </AntdLayout>
+      </AntdProvider>
     </StyledComponentsRegistry>
   );
 };

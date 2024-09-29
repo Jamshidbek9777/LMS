@@ -7,7 +7,7 @@ import {
   StyleSheetManager,
   ThemeProvider,
 } from "styled-components";
-// import { GlobalStyles } from "@/style";
+import { GlobalStyles } from "@/style";
 
 export const StyledComponentsRegistry = ({ children }: PropsWithChildren) => {
   const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet());
@@ -22,7 +22,7 @@ export const StyledComponentsRegistry = ({ children }: PropsWithChildren) => {
 
   return (
     <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
-      {/* <GlobalStyles /> */}
+      <GlobalStyles />
       <ThemeProvider theme={{}}>{children}</ThemeProvider>
     </StyleSheetManager>
   );
