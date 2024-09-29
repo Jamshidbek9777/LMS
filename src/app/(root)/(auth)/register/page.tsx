@@ -14,6 +14,7 @@ import {
   SubmitButton,
   Wrapper,
 } from "../style";
+import Link from "next/link";
 
 type FieldType = {
   fullname?: string;
@@ -95,7 +96,15 @@ const Register = () => {
               </SubmitButton>
             </Form.Item>
           </StyledForm>
-          <Helper>Hisobingiz bormi ? Kirish</Helper>
+          <Helper>
+            Hisobingiz bormi ?{" "}
+            <Link
+              style={{ color: "#fff", borderBottom: "1px solid white" }}
+              href={"/login"}
+            >
+              Kirish
+            </Link>
+          </Helper>
         </Flex>
       </Container>
     </Wrapper>

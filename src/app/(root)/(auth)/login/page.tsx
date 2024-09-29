@@ -14,6 +14,7 @@ import {
   LoginTitle,
   Label,
 } from "../style";
+import Link from "next/link";
 
 type FieldType = {
   email?: string;
@@ -71,23 +72,27 @@ const Login = () => {
               label={<Label>Parol</Label>}
               name="password"
               rules={[{ required: true, message: "Iltimos parol kiriting!" }]}
-              style={{
-                textAlign: "center",
-                width: "100%",
-              }}
             >
               <AntdInputPassword placeholder="Parol kiriting" />
-              <p style={{ marginTop: "10px", color: "#fff" }}>
-                Parolni unutdingizmi?
-              </p>
             </Form.Item>
+            <p style={{ marginTop: "10px", color: "#fff" }}>
+              Parolni unutdingizmi?
+            </p>
             <Form.Item>
               <SubmitButton block htmlType="submit">
                 Davom etish
               </SubmitButton>
             </Form.Item>
           </StyledForm>
-          <Helper>Hisobingiz yo&#39;qmi ? Ro&#39;yxatdan o&#39;tish</Helper>
+          <Helper>
+            Hisobingiz yo&#39;qmi ?{" "}
+            <Link
+              style={{ color: "#fff", borderBottom: "1px solid white" }}
+              href={"/register"}
+            >
+              Ro&#39;yxatdan o&#39;tish
+            </Link>
+          </Helper>
         </Flex>
       </Container>
     </Wrapper>
