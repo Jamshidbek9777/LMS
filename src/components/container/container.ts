@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  /* max-width: 1440px; */
+  /* width: 1440p; */
 
-  padding: 5px 14px;
-  margin: 0 auto;
+  /* padding: 5px 14px; */
+  /* margin: 0 auto; */
 `;

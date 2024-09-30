@@ -3,6 +3,7 @@ import { Button, Form, Input } from "antd";
 import styled from "styled-components";
 
 type FieldType = {
+  otp?: number;
   fullname?: string;
   email?: string;
   password?: string;
@@ -34,6 +35,7 @@ export const Label = styled.p`
   color: #fff;
   font-weight: 700;
   font-size: 18px;
+  margin-top: 5px;
 
   ${media.sm`
     font-size: 14px
@@ -62,6 +64,7 @@ export const AntdInputPassword = styled(Input.Password)`
 
 export const Helper = styled.p`
   color: #fff;
+  margin-top: 10px;
 
   ${media.sm`
     font-size: 14px;
@@ -81,6 +84,18 @@ export const StyledForm = styled(Form<FieldType>)`
 `;
 
 export const SubmitButton = styled(Button)`
+  margin-top: 10px;
+
+  ${media.sm`
+   height: 44px !important;
+   font-size: 16px !important;
+  `}
+`;
+
+export const CancelButton = styled(Button)`
+  margin-top: 10px;
+  background-color: red !important;
+
   ${media.sm`
    height: 44px !important;
    font-size: 16px !important;

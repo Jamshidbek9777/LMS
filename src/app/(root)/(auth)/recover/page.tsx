@@ -4,16 +4,15 @@ import type { FormProps } from "antd";
 import { Flex, Form } from "antd";
 import { useLayoutEffect } from "react";
 import {
-  AntdInputPassword,
   StyledForm,
   SubmitButton,
   Wrapper,
   AntdInput,
-  Helper,
   LoginTitle,
   Label,
+  CancelButton,
 } from "../style";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type FieldType = {
   email?: string;
@@ -35,7 +34,7 @@ const setVh = () => {
   });
 };
 
-const Login = () => {
+const Recover = () => {
   useLayoutEffect(() => {
     setVh();
 
@@ -46,12 +45,12 @@ const Login = () => {
       window.removeEventListener("orientationchange", setVh);
     };
   }, []);
-
+  const router = useRouter();
   return (
     <Wrapper>
       <Container style={{ width: "100%", margin: "0 20px" }}>
         <Flex vertical align="center">
-          <LoginTitle>Kirish</LoginTitle>
+          <LoginTitle>Qayta tiklash</LoginTitle>
           <StyledForm
             name="basic"
             onFinish={onFinish}
@@ -67,50 +66,20 @@ const Login = () => {
               <AntdInput placeholder="Email kiriting" />
             </Form.Item>
 
-            <Form.Item<FieldType>
-              label={<Label>Parol</Label>}
-              name="password"
-              rules={[{ required: true, message: "Iltimos parol kiriting!" }]}
-            >
-              <AntdInputPassword placeholder="Parol kiriting" />
-            </Form.Item>
-            <div
-              style={{
-                marginTop: "10px",
-                display: "flex",
-                justifyContent: "end",
-              }}
-            >
-              <Link
-                href={"/recover"}
-                style={{
-                  color: "#fff",
-                  borderBottom: "1px solid white",
-                }}
-              >
-                Parolni unutdingizmi?
-              </Link>
-            </div>
-
             <Form.Item>
               <SubmitButton block htmlType="submit">
-                Davom etish
+                Kod yuborish
               </SubmitButton>
             </Form.Item>
+
+            <CancelButton onClick={() => router.back()} block>
+              Cancel
+            </CancelButton>
           </StyledForm>
-          <Helper>
-            Hisobingiz yo&#39;qmi ?{" "}
-            <Link
-              style={{ color: "#fff", borderBottom: "1px solid white" }}
-              href={"/register"}
-            >
-              Ro&#39;yxatdan o&#39;tish
-            </Link>
-          </Helper>
         </Flex>
       </Container>
     </Wrapper>
   );
 };
 
-export default Login;
+export default Recover;

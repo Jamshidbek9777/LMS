@@ -35,7 +35,7 @@ const components: ThemeConfig["components"] = {
     labelFontSize: 16,
     controlHeightLG: 8,
     fontWeightStrong: 500,
-    itemMarginBottom: 20,
+    itemMarginBottom: 5,
   },
 
   Input: {
@@ -61,7 +61,7 @@ const components: ThemeConfig["components"] = {
   },
 
   Menu: {
-    itemColor: "#94A3B8",
+    // itemColor: "#94A3B8",
     padding: 20,
   },
 

@@ -1,2 +1,2 @@
 export { Sider } from "./sider";
-export { menuItems } from "./menuItems";
+export { menuItems } from "./constants";

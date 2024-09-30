@@ -1,6 +1,5 @@
 "use client";
 import { Container } from "@/components";
-import { media } from "@/style";
 import type { FormProps } from "antd";
 import { Flex, Form } from "antd";
 import { useLayoutEffect } from "react";

@@ -11,7 +11,11 @@ import { AntdProvider, StyledComponentsRegistry } from "@/services";
 export const ClientLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
-  const isLoginPage = pathname === "/login" || "/register";
+  const isLoginPage =
+    pathname === "/login" ||
+    pathname === "/register" ||
+    pathname === "/recover" ||
+    pathname === "/otp";
 
   return isLoginPage ? (
     <StyledComponentsRegistry>
@@ -22,10 +26,10 @@ export const ClientLayout = ({ children }: { children: React.ReactNode }) => {
   ) : (
     <StyledComponentsRegistry>
       <AntdProvider>
-        <Header />
         <AntdLayout hasSider>
           <Sider />
           <AntdLayout>
+            <Header />
             <Content>{children}</Content>
           </AntdLayout>
         </AntdLayout>
