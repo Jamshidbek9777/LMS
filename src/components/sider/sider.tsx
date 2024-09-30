@@ -36,7 +36,7 @@ export const Sider = () => {
         mode="inline"
         selectedKeys={[selectedMenu.key]}
         openKeys={[selectedMenu.key]}
-        theme="dark"
+        theme="light"
         items={menuItemsTyped}
       ></AntMenu>
     </LayoutSider>

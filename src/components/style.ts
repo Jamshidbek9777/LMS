@@ -3,7 +3,7 @@ import { Layout, Menu } from "antd";
 import styled from "styled-components";
 
 export const LayoutSider = styled(Layout.Sider)`
-  /* background: #fff !important; */
+  background: #fff !important;
   color: var(--white);
   /* border: 1px solid black; */
 `;
