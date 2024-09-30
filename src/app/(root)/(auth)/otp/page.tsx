@@ -63,7 +63,7 @@ const Otp = () => {
               name="otp"
               rules={[{ required: true, message: "Iltimos kodni kiriting!" }]}
             >
-              <InputOtp
+              <Input.OTP
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
@@ -90,8 +90,3 @@ const Otp = () => {
 };
 
 export default Otp;
-
-export const InputOtp = styled(Input.OTP)`
-  display: flex;
-  height: 10px !important;
-`;
