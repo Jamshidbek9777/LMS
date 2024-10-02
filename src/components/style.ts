@@ -24,7 +24,7 @@ export const LayoutContent = styled(Layout.Content)<{ isLoginPage: boolean }>`
   overflow-y: auto;
 
   ${media.md`
-    height: 78vh;
+    /* height: 78vh; */
   `}
 `;
 
