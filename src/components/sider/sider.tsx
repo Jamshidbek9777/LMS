@@ -8,6 +8,7 @@ import { Box } from "@/components";
 import { useMenuItem } from "../utils";
 import { HeaderProps } from "@/types/components";
 import { useAppStore } from "@/store";
+import { useState } from "react";
 
 const menuItemsTyped: MenuProps["items"] = menuItems.map(
   ({ id, key, icon, name }) => ({
@@ -16,15 +17,16 @@ const menuItemsTyped: MenuProps["items"] = menuItems.map(
     label: <Link href={`${key}`}>{name}</Link>,
   })
 );
-
 export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
   const { setIsDrawer } = useAppStore();
-  const { selectedMenu } = useMenuItem();
+  // const { selectedMenu } = useMenuItem();
 
-  const handleClick: MenuProps["onClick"] = () => {
+  const handleClick: MenuProps["onClick"] = (e) => {
     if (!isVisible) setIsDrawer(false);
+    setCurrent(e.key);
   };
 
+  const [current, setCurrent] = useState("1");
   return (
     <LayoutSider
       width={240}
@@ -48,8 +50,8 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
 
       <AntMenu
         mode="inline"
-        selectedKeys={[selectedMenu.key]}
-        openKeys={[selectedMenu.key]}
+        selectedKeys={[current]}
+        // openKeys={[selectedMenu.key]}
         theme="dark"
         items={menuItemsTyped}
         onClick={handleClick}

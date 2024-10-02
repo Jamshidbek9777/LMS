@@ -8,6 +8,7 @@ import { LuLogOut, LuUser } from "react-icons/lu";
 import { AlignLeft, AlignRight, Bell, User } from "lucide-react";
 import styled from "styled-components";
 import { media } from "@/style";
+import { Desc, UserName } from "./style";
 
 export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
   const { setIsDrawer } = useAppStore();
@@ -101,16 +102,4 @@ export const SearchInput = styled(Input)`
     /* width: 100px !important; */
     display: none !important;
   `}
-`;
-
-export const UserName = styled.h5`
-  color: var(--dark);
-  font-size: var(--base);
-  line-height: 120%;
-`;
-
-export const Desc = styled.p`
-  color: #94a3b8;
-  font-size: 10px;
-  line-height: 120%;
 `;

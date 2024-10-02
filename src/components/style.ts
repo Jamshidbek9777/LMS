@@ -19,7 +19,7 @@ export const LayoutSider = styled(Layout.Sider)`
 `;
 
 export const LayoutContent = styled(Layout.Content)<{ isLoginPage: boolean }>`
-  height: ${({ isLoginPage }) => (isLoginPage ? "100vh" : "70vh")};
+  height: ${({ isLoginPage }) => (isLoginPage ? "100vh" : "93vh")};
   padding: ${({ isLoginPage }) => (isLoginPage ? "0" : "var(--base)")};
   overflow-y: auto;
 
