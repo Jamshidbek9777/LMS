@@ -1,39 +1,116 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { Container } from "@/components";
-import { InfoButton, Wrapper } from "./style";
-import { AlignJustify } from "lucide-react";
-import { Flex, Input } from "antd";
+import { useAppStore } from "@/store";
+import { HeaderProps } from "@/types/components";
+import { Flex, Input, Button, Dropdown, MenuProps, Avatar } from "antd";
+import { LayoutHeader } from "../style";
+import { LuLogOut, LuUser } from "react-icons/lu";
+import { AlignLeft, AlignRight, Bell, User } from "lucide-react";
 import styled from "styled-components";
+import { media } from "@/style";
 
-export const Header = () => {
-  const router = useRouter();
-  const { Search } = Input;
+export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
+  const { setIsDrawer } = useAppStore();
+
+  const handleOpenDrawer = () => {
+    setIsDrawer(true);
+  };
+
+  const items: MenuProps["items"] = [
+    {
+      label: (
+        <Flex align="center" justify="space-between">
+          {<h1>Chiqish</h1>} <LuLogOut size={20} />
+        </Flex>
+      ),
+      key: "2",
+      // onClick: handleLogOut,
+    },
+    {
+      type: "divider",
+    },
+    {
+      label: (
+        <Flex align="center" justify="space-between">
+          {<h1>nmadir</h1>} <LuLogOut size={20} />
+        </Flex>
+      ),
+      key: "3",
+      // onClick: handleLogOut,
+    },
+  ];
+
   return (
     <>
-      {/* <Container> */}
-      <Wrapper>
-        <Flex justify="center" align="center" gap={20}>
-          <AlignJustify />
-          <Input
-            placeholder="Search"
-            variant="filled"
-            size="large"
+      <LayoutHeader>
+        <Flex align="center" gap={20}>
+          <Button
+            className={isVisible ? "sider-desktop" : ""}
+            type="text"
+            icon={collapsed ? <AlignRight /> : <AlignLeft />}
+            onClick={() => setCollapsed?.(!collapsed)}
             style={{
-              width: "350px",
+              color: "black",
             }}
           />
+
+          <Button
+            className={isVisible ? "header-drawer" : ""}
+            type="text"
+            icon={collapsed ? <AlignRight /> : <AlignLeft />}
+            onClick={handleOpenDrawer}
+            style={{
+              color: "black",
+            }}
+          />
+
+          <SearchInput variant="filled" placeholder="Search" size="large" />
         </Flex>
-      </Wrapper>
-      {/* </Container> */}
+        <Flex gap={20} align="center">
+          <Bell />
+          <Dropdown menu={{ items }}>
+            <h1>Uz</h1>
+          </Dropdown>
+          <Dropdown menu={{ items }}>
+            <Flex align="center" gap="small">
+              <Flex vertical>
+                <UserName>John</UserName>
+                <Desc>admin</Desc>
+              </Flex>
+              <Avatar
+                src={""}
+                icon={<LuUser size={20} />}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              />
+            </Flex>
+          </Dropdown>
+        </Flex>
+      </LayoutHeader>
     </>
   );
 };
 
-export default Header;
+export const SearchInput = styled(Input)`
+  width: 320px !important;
 
-// export const SearchInput = styled(Input.Search)`
-/* height: 30px !important; */
-/* padding: 0 !important; */
-// `;
+  ${media.md`
+    /* width: 100px !important; */
+    display: none !important;
+  `}
+`;
+
+export const UserName = styled.h5`
+  color: var(--dark);
+  font-size: var(--base);
+  line-height: 120%;
+`;
+
+export const Desc = styled.p`
+  color: #94a3b8;
+  font-size: 10px;
+  line-height: 120%;
+`;

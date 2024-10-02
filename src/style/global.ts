@@ -166,11 +166,16 @@ export const GlobalStyles = createGlobalStyle`
   .sider-desktop {
     border-right: 1px solid #e2e8f0;
 
-    ${media.md`
-      display: none;
+    ${media.lg`
+      display: none !important;
     `}
   }
-
+.header-drawer{
+  display: none !important; 
+  ${media.lg`
+      display: block !important;
+    `}
+}
   .ant-skeleton span {
     align-items: center !important;
     display: flex !important;

@@ -2,10 +2,20 @@ import { media } from "@/style";
 import { Layout, Menu } from "antd";
 import styled from "styled-components";
 
+export const LayoutHeader = styled(Layout.Header)`
+  /* align-items: center; */
+  /* align-content: center; */
+  padding: 10px !important;
+  display: flex;
+  justify-content: space-between;
+  /* 
+  ${media.md`
+    height: 78vh;
+  `} */
+`;
 export const LayoutSider = styled(Layout.Sider)`
   background: #fff !important;
-  color: var(--white);
-  /* border: 1px solid black; */
+  /* color: var(--white); */
 `;
 
 export const LayoutContent = styled(Layout.Content)<{ isLoginPage: boolean }>`

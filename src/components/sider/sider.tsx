@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-
-import { Flex, MenuProps } from "antd";
+import { MenuProps } from "antd";
 import { menuItems } from "./constants";
 import { AntMenu, LayoutSider } from "../style";
-import { Box, Icons } from "@/components";
-import React from "react";
+import { Box } from "@/components";
 import { useMenuItem } from "../utils";
+import { HeaderProps } from "@/types/components";
+import { useAppStore } from "@/store";
 
 const menuItemsTyped: MenuProps["items"] = menuItems.map(
   ({ id, key, icon, name }) => ({
@@ -17,28 +17,43 @@ const menuItemsTyped: MenuProps["items"] = menuItems.map(
   })
 );
 
-export const Sider = () => {
+export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
+  const { setIsDrawer } = useAppStore();
   const { selectedMenu } = useMenuItem();
+
+  const handleClick: MenuProps["onClick"] = () => {
+    if (!isVisible) setIsDrawer(false);
+  };
+
   return (
-    <LayoutSider width={240}>
-      <Box
-        // as={Icons.Logo}
-        $justify="center"
-        $mb="var(--2xl)"
-        $mt="var(--ss)"
-        $width="100%"
-        style={{ color: "black" }}
-      >
-        <h2>Logo</h2>
-      </Box>
+    <LayoutSider
+      width={240}
+      collapsible
+      collapsed={collapsed}
+      trigger={null}
+      className={isVisible ? "sider-desktop" : ""}
+    >
+      {isVisible && (
+        <Box
+          // as={Icons.Logo}
+          $justify="center"
+          $mb="var(--2xl)"
+          $mt="var(--ss)"
+          $width="100%"
+          style={{ color: "black" }}
+        >
+          <h2>Logo</h2>
+        </Box>
+      )}
 
       <AntMenu
         mode="inline"
         selectedKeys={[selectedMenu.key]}
         openKeys={[selectedMenu.key]}
-        theme="light"
+        theme="dark"
         items={menuItemsTyped}
-      ></AntMenu>
+        onClick={handleClick}
+      />
     </LayoutSider>
   );
 };
