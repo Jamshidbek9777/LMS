@@ -9,32 +9,32 @@ import { FaRegQuestionCircle } from "react-icons/fa";
 export const menuItems = [
   {
     id: 0,
-    key: ROUTES.dashboard,
+    key: ROUTES.home,
     name: "Dashboard",
     icon: <LuHome />,
   },
   {
     id: 1,
-    key: ROUTES.subjects,
-    name: "Subjects",
+    key: ROUTES.arizalar,
+    name: "Arizalar",
     icon: <IoBookOutline />,
   },
   {
     id: 2,
-    key: ROUTES.table,
-    name: "Table",
+    key: ROUTES.groups,
+    name: "Guruhlar",
     icon: <CiViewTable />,
   },
   {
     id: 3,
-    key: ROUTES.plan,
-    name: "Your plan",
+    key: ROUTES.courses,
+    name: "Kurslar",
     icon: <GrPlan />,
   },
   {
     id: 4,
-    key: ROUTES.finals,
-    name: "Finals",
+    key: ROUTES.news,
+    name: "Yangiliklar",
     icon: <FaRegQuestionCircle />,
   },
 ];

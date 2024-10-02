@@ -62,7 +62,9 @@ const components: ThemeConfig["components"] = {
 
   Menu: {
     // itemColor: "#94A3B8",
-    padding: 20,
+    // itemActiveBg: "#4880FF",
+    itemSelectedBg: "#4880FF",
+    itemSelectedColor: "#fff",
   },
 
   Select: {

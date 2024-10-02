@@ -7,11 +7,11 @@ import { usePathname } from "next/navigation";
 export const Content = ({ children }: PropsWithChildren) => {
   const pathname = usePathname();
 
-  const isLoginPage =
+  const isloginpage =
     pathname === "/login" ||
     pathname === "/register" ||
     pathname === "/recover" ||
     pathname === "/otp";
 
-  return <LayoutContent isLoginPage={isLoginPage}>{children}</LayoutContent>;
+  return <LayoutContent isloginpage={isloginpage}>{children}</LayoutContent>;
 };

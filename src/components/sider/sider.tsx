@@ -5,7 +5,6 @@ import { MenuProps } from "antd";
 import { menuItems } from "./constants";
 import { AntMenu, LayoutSider } from "../style";
 import { Box } from "@/components";
-import { useMenuItem } from "../utils";
 import { HeaderProps } from "@/types/components";
 import { useAppStore } from "@/store";
 import { useState } from "react";
@@ -18,15 +17,14 @@ const menuItemsTyped: MenuProps["items"] = menuItems.map(
   })
 );
 export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
+  const [current, setCurrent] = useState("1");
   const { setIsDrawer } = useAppStore();
-  // const { selectedMenu } = useMenuItem();
 
   const handleClick: MenuProps["onClick"] = (e) => {
     if (!isVisible) setIsDrawer(false);
     setCurrent(e.key);
   };
 
-  const [current, setCurrent] = useState("1");
   return (
     <LayoutSider
       width={240}
@@ -51,8 +49,7 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
       <AntMenu
         mode="inline"
         selectedKeys={[current]}
-        // openKeys={[selectedMenu.key]}
-        theme="dark"
+        theme="light"
         items={menuItemsTyped}
         onClick={handleClick}
       />

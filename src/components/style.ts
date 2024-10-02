@@ -18,9 +18,9 @@ export const LayoutSider = styled(Layout.Sider)`
   /* color: var(--white); */
 `;
 
-export const LayoutContent = styled(Layout.Content)<{ isLoginPage: boolean }>`
-  height: ${({ isLoginPage }) => (isLoginPage ? "100vh" : "93vh")};
-  padding: ${({ isLoginPage }) => (isLoginPage ? "0" : "var(--base)")};
+export const LayoutContent = styled(Layout.Content)<{ isloginpage: boolean }>`
+  height: ${({ isloginpage }) => (isloginpage ? "100vh" : "93vh")};
+  padding: ${({ isloginpage }) => (isloginpage ? "0" : "var(--base)")};
   overflow-y: auto;
 
   ${media.md`

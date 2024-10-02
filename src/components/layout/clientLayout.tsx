@@ -18,13 +18,13 @@ export const ClientLayout = ({ children }: { children: React.ReactNode }) => {
     setIsDrawer(false);
   };
 
-  const isLoginPage =
+  const isloginpage =
     pathname === "/login" ||
     pathname === "/register" ||
     pathname === "/recover" ||
     pathname === "/otp";
 
-  return isLoginPage ? (
+  return isloginpage ? (
     <StyledComponentsRegistry>
       <AntdProvider>
         <Content>{children}</Content>
