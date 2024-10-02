@@ -74,7 +74,7 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
           <Dropdown menu={{ items }}>
             <Flex align="center" gap="small">
               <Flex vertical>
-                <UserName>John</UserName>
+                <UserName>Jamshidbek</UserName>
                 <Desc>admin</Desc>
               </Flex>
               <Avatar
