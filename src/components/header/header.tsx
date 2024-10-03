@@ -30,9 +30,10 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
   const items: MenuProps["items"] = [
     {
       label: (
-        <Flex align="center" justify="space-between">
-          {<h1>Chiqish</h1>} <LuLogOut size={20} />
-        </Flex>
+        <UserFlexdrp vertical>
+          <UserName isdarkmode={isdarkmode}>Jamshidbek</UserName>
+          <Desc isdarkmode={isdarkmode}>admin</Desc>
+        </UserFlexdrp>
       ),
       key: "2",
       // onClick: handleLogOut,
@@ -43,7 +44,7 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
     {
       label: (
         <Flex align="center" justify="space-between">
-          {<h1>nmadir</h1>} <LuLogOut size={20} />
+          {<h1>Log out</h1>} <LuLogOut size={20} />
         </Flex>
       ),
       key: "3",
@@ -93,10 +94,10 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
 
           <UserDropdown menu={{ items }}>
             <Flex align="center" gap="small">
-              <Flex vertical>
+              <UserFlex vertical>
                 <UserName isdarkmode={isdarkmode}>Jamshidbek</UserName>
                 <Desc isdarkmode={isdarkmode}>admin</Desc>
-              </Flex>
+              </UserFlex>
               <Avatar
                 src={""}
                 icon={<LuUser size={20} />}
@@ -120,6 +121,18 @@ export const UserDropdown = styled(Dropdown)`
   justify-content: center;
   align-items: center;
   ${media.md`
+    /* display: none !important; */
+  `}
+`;
+
+export const UserFlex = styled(Flex)`
+  ${media.md`
     display: none !important;
+  `}
+`;
+export const UserFlexdrp = styled(Flex)`
+  display: none;
+  ${media.md`
+    display: block !important;
   `}
 `;

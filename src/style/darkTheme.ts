@@ -70,6 +70,9 @@ const components: ThemeConfig["components"] = {
     itemSelectedColor: "#fff",
     darkSubMenuItemBg: "#333",
     colorSplit: "grey",
+    // darkSubMenuItemBg: "red",
+    darkPopupBg: "red",
+    itemHoverColor: "red",
   },
 
   Select: {

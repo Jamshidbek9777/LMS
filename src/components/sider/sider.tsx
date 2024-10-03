@@ -6,7 +6,7 @@ import { useAppStore } from "@/store";
 import { useTheme } from "@/services/antd";
 import { HeaderProps } from "@/types/components";
 import { ROUTES, Box } from "@/components";
-import { Menu, MenuProps } from "antd";
+import { Menu, MenuProps, Tooltip } from "antd";
 import {
   CircleGauge,
   ClipboardCheck,
@@ -18,6 +18,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import { LayoutSider } from "../style";
+import styled from "styled-components";
 
 export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
   const menuItems: any = [
@@ -78,6 +79,15 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
         },
       ],
     },
+    {
+      type: "divider",
+    },
+    // {
+    //   id: 5,
+    //   key: ROUTES.news,
+    //   label: "Yangiliklar",
+    //   icon: <Newspaper size={18} />,
+    // },
   ];
 
   const { isdarkmode } = useTheme();
