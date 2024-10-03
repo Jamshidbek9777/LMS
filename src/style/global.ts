@@ -227,16 +227,40 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 12px
   `}
 }
-.ant-menu-submenu-title {
-  color: black;
+
+//Sider submenu parent color matching
+body.light-mode .ant-menu-submenu-title {
+  color: black; 
 }
 
-.ant-menu-submenu-selected .ant-menu-submenu-title {
-  color: black !important;
+body.light-mode .ant-menu-submenu-selected .ant-menu-submenu-title {
+  color: black !important; 
 }
 
-.ant-menu-item-selected {
+body.light-mode .ant-menu-item-selected {
   background-color: #4880FF !important;
   color: white !important; 
 }
+
+body.dark-mode .ant-menu-submenu-title {
+  color: #f0f0f0;
+}
+
+body.dark-mode .ant-menu-submenu-selected .ant-menu-submenu-title {
+  color: #f0f0f0 !important; 
+}
+
+body.dark-mode .ant-menu-item-selected {
+  background-color: #4880FF !important; 
+  color: white !important; 
+}
+
+body.light-mode .ant-menu-item:hover {
+  background-color: #5A8DFF; 
+}
+
+body.dark-mode .ant-menu-item:hover {
+  background-color: #6a9fff;
+}
+
 `;

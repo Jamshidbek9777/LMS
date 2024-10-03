@@ -5,6 +5,7 @@ import {
   useState,
   PropsWithChildren,
 } from "react";
+
 import { ConfigProvider } from "antd";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { lightTheme } from "@/style/lightTheme";
@@ -19,10 +20,13 @@ export const useTheme = () => useContext(ThemeContext);
 
 export const Antd = ({ children }: PropsWithChildren) => {
   const [isdarkmode, setIsDarkMode] = useState(false);
+  const [loading, setLoading] = useState(true); // New loading state
 
+  // Set the theme based on localStorage when the component mounts
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
     setIsDarkMode(savedTheme === "dark");
+    setLoading(false); // Done loading once theme is set
   }, []);
 
   const toggleTheme = () => {
@@ -30,6 +34,9 @@ export const Antd = ({ children }: PropsWithChildren) => {
     setIsDarkMode(!isdarkmode);
     localStorage.setItem("theme", newTheme);
   };
+
+  // Render nothing while the theme is loading
+  if (loading) return null;
 
   return (
     <ThemeContext.Provider value={{ isdarkmode, toggleTheme }}>

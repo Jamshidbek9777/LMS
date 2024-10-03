@@ -7,7 +7,7 @@ import { Layout, Menu, MenuProps } from "antd";
 import { Box } from "@/components";
 import { HeaderProps } from "@/types/components";
 import { useAppStore } from "@/store";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "@/services/antd";
 import styled from "styled-components";
 
@@ -124,6 +124,16 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
       router.push(selectedItem.key); // Navigate to the route using the item's key
     }
   };
+
+  useEffect(() => {
+    if (isdarkmode) {
+      document.body.classList.add("dark-mode");
+      document.body.classList.remove("light-mode");
+    } else {
+      document.body.classList.add("light-mode");
+      document.body.classList.remove("dark-mode");
+    }
+  }, [isdarkmode]);
 
   return (
     <LayoutSider
