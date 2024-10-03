@@ -78,26 +78,20 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
       icon: <Settings size={18} />,
       children: [
         {
-          // id: 1,
-          key: ROUTES.groups,
+          id: 1,
+          key: ROUTES.adminSettings,
           label: "Admin",
           icon: <ShieldCheck size={18} />,
         },
         {
-          // id: 1,
-          key: ROUTES.groups,
+          id: 2,
+          key: ROUTES.teacherSettings,
           label: "O'qituvchi",
           icon: <Presentation size={18} />,
         },
         {
-          // id: 1,
-          key: ROUTES.groups,
-          label: "Admin",
-          icon: <ShieldCheck size={18} />,
-        },
-        {
-          // id: 1,
-          key: ROUTES.groups,
+          id: 3,
+          key: ROUTES.subjects,
           label: "Admin",
           icon: <ShieldCheck size={18} />,
         },
@@ -105,7 +99,7 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
     },
   ];
 
-  const { isDarkMode } = useTheme();
+  const { isdarkmode } = useTheme();
   const [current, setCurrent] = useState("0");
   const { setIsDrawer } = useAppStore();
   const router = useRouter();
@@ -113,10 +107,21 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
   const handleClick: MenuProps["onClick"] = (e) => {
     if (!isVisible) setIsDrawer(false);
     setCurrent(e.key);
+    const findMenuItem = (items: any[], key: string): any => {
+      for (const item of items) {
+        if (item.key === key) return item;
+        if (item.children) {
+          const found = findMenuItem(item.children, key);
+          if (found) return found;
+        }
+      }
+      return null;
+    };
 
-    const selectedItem = menuItems.find((item: any) => item.key === e.key);
+    // Find the selected item in the menu (including children)
+    const selectedItem = findMenuItem(menuItems, e.key);
     if (selectedItem) {
-      router.push(selectedItem.key);
+      router.push(selectedItem.key); // Navigate to the route using the item's key
     }
   };
 
@@ -126,7 +131,7 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
       collapsible
       collapsed={collapsed}
       trigger={null}
-      isDarkMode={isDarkMode}
+      isdarkmode={isdarkmode}
       className={isVisible ? "sider-desktop" : ""}
     >
       {isVisible && (
@@ -135,7 +140,7 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
           $mb="var(--2xl)"
           $mt="var(--ss)"
           $width="100%"
-          style={{ color: isDarkMode ? "white" : "black" }}
+          style={{ color: isdarkmode ? "white" : "black" }}
         >
           <h2>Logo</h2>
         </Box>
@@ -145,15 +150,17 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
         style={{ height: "93.3vh" }}
         mode="inline"
         selectedKeys={[current]}
-        theme={isDarkMode ? "dark" : "light"}
+        theme={isdarkmode ? "dark" : "light"}
         items={menuItems}
         onClick={handleClick}
+        defaultOpenKeys={["Sozlamalar"]}
       />
     </LayoutSider>
   );
 };
-export const LayoutSider = styled(Layout.Sider)<{ isDarkMode: boolean }>`
-  background-color: ${({ isDarkMode }) =>
-    isDarkMode ? "#333" : "#ffffff"} !important;
-  color: ${({ isDarkMode }) => (isDarkMode ? "#ffffff" : "#000000")};
+export const LayoutSider = styled(Layout.Sider)<{ isdarkmode: boolean }>`
+  background-color: ${({ isdarkmode }) =>
+    isdarkmode ? "#333" : "#ffffff"} !important;
+  color: ${({ isdarkmode }) => (isdarkmode ? "#ffffff" : "#000000")};
+  user-select: none;
 `;

@@ -2,9 +2,9 @@ import { media } from "@/style";
 import { Input, Layout, Menu } from "antd";
 import styled from "styled-components";
 
-export const LayoutHeader = styled.header<{ isDarkMode: boolean }>`
-  background-color: ${({ isDarkMode }) => (isDarkMode ? "#333" : "#fff")};
-  color: ${({ isDarkMode }) => (isDarkMode ? "#fff" : "#000 !important")};
+export const LayoutHeader = styled.header<{ isdarkmode: boolean }>`
+  background-color: ${({ isdarkmode }) => (isdarkmode ? "#333" : "#fff")};
+  color: ${({ isdarkmode }) => (isdarkmode ? "#fff" : "#000 !important")};
   padding: 0 10px;
   height: 64px;
   display: flex;
@@ -12,20 +12,20 @@ export const LayoutHeader = styled.header<{ isDarkMode: boolean }>`
   justify-content: space-between;
 `;
 
-export const SearchInput = styled(Input)<{ isDarkMode: boolean }>`
+export const SearchInput = styled(Input)<{ isdarkmode: boolean }>`
   width: 320px !important;
-  background-color: ${({ isDarkMode }) =>
-    isDarkMode ? "#222" : "#fff"} !important;
-  color: ${({ isDarkMode }) => (isDarkMode ? "#fff" : "#000")} !important;
-  border: ${({ isDarkMode }) =>
-    isDarkMode ? "1px solid #555" : "1px solid #ccc"} !important;
+  background-color: ${({ isdarkmode }) =>
+    isdarkmode ? "#222" : "#fff"} !important;
+  color: ${({ isdarkmode }) => (isdarkmode ? "#fff" : "#000")} !important;
+  border: ${({ isdarkmode }) =>
+    isdarkmode ? "1px solid #555" : "1px solid #ccc"} !important;
 
   ${media.md`
     display: none !important;
   `}
 `;
 
-export const LayoutSider = styled(Layout.Sider)<{ isDarkMode: boolean }>`
+export const LayoutSider = styled(Layout.Sider)<{ isdarkmode: boolean }>`
   /* background: #fff !important; */
 
   /* color: var(--white); */

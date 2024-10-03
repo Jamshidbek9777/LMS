@@ -34,10 +34,10 @@ export const ClientLayout = ({ children }: { children: React.ReactNode }) => {
     <StyledComponentsRegistry>
       <AntdProvider>
         <AntdLayout hasSider>
-          <Sider collapsed={collapsed} isVisible isDarkMode />
+          <Sider collapsed={collapsed} isVisible isdarkmode />
           <AntdLayout>
             <Header
-              isDarkMode
+              isdarkmode
               collapsed={collapsed}
               setCollapsed={setCollapsed}
               isVisible
@@ -53,7 +53,7 @@ export const ClientLayout = ({ children }: { children: React.ReactNode }) => {
           onClose={handleCloseDrawer}
           styles={{ body: { padding: 0 } }}
         >
-          <Sider isDarkMode />
+          <Sider isdarkmode />
         </Drawer>
       </AntdProvider>
     </StyledComponentsRegistry>

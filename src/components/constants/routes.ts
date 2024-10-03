@@ -5,6 +5,8 @@ export const ROUTES = {
   groups: "/groups",
   courses: "/courses",
   news: "/news",
+  adminSettings: "adminSettings",
+  teacherSettings: "teacherSettings",
   subjects: "/subjects",
   finals: "/finals",
   login: "/login",

@@ -227,6 +227,16 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 12px
   `}
 }
+.ant-menu-submenu-title {
+  color: black;
+}
 
+.ant-menu-submenu-selected .ant-menu-submenu-title {
+  color: black !important;
+}
 
+.ant-menu-item-selected {
+  background-color: #4880FF !important;
+  color: white !important; 
+}
 `;

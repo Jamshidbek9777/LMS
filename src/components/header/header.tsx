@@ -13,7 +13,7 @@ import { media } from "@/style";
 
 export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
   const { setIsDrawer } = useAppStore();
-  const { isDarkMode, toggleTheme } = useTheme();
+  const { isdarkmode, toggleTheme } = useTheme();
 
   const handleOpenDrawer = () => {
     setIsDrawer(true);
@@ -45,7 +45,7 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
 
   return (
     <>
-      <LayoutHeader isDarkMode={isDarkMode}>
+      <LayoutHeader isdarkmode={isdarkmode}>
         <Flex align="center" gap={20}>
           <Button
             className={isVisible ? "sider-desktop" : ""}
@@ -65,18 +65,18 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
             variant="filled"
             placeholder="Search"
             size="large"
-            isDarkMode={isDarkMode}
+            isdarkmode={isdarkmode}
           />
         </Flex>
 
         <Flex gap={20} align="center">
-          <Bell color={isDarkMode ? "white" : "black"} />
+          <Bell color={isdarkmode ? "white" : "black"} />
           <Dropdown menu={{ items }}>
-            <h1 style={{ color: isDarkMode ? "white" : "black" }}>Uz</h1>
+            <h1 style={{ color: isdarkmode ? "white" : "black" }}>Uz</h1>
           </Dropdown>
 
           <Button onClick={toggleTheme} type="text">
-            {isDarkMode ? <SunMoon /> : <Moon />}
+            {isdarkmode ? <SunMoon /> : <Moon />}
           </Button>
 
           <UserDropdown menu={{ items }}>
@@ -92,7 +92,7 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: isDarkMode ? "white" : "black",
+                  color: isdarkmode ? "white" : "black",
                 }}
               />
             </Flex>

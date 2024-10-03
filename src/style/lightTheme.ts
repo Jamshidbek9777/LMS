@@ -64,7 +64,7 @@ const components: ThemeConfig["components"] = {
     // itemColor: "#94A3B8",
     // itemActiveBg: "#4880FF",
     itemSelectedBg: "#4880FF",
-    itemSelectedColor: "#fff",
+    itemSelectedColor: "#FFD1DC",
   },
 
   Select: {
