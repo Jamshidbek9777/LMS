@@ -68,6 +68,8 @@ const components: ThemeConfig["components"] = {
     darkItemBg: "#333",
     itemSelectedBg: "#4880FF",
     itemSelectedColor: "#fff",
+    darkSubMenuItemBg: "#333",
+    colorSplit: "grey",
   },
 
   Select: {
@@ -144,6 +146,11 @@ const components: ThemeConfig["components"] = {
     headerBg: "#fff",
     headerSplitColor: "#fff",
     headerColor: "#64748b",
+  },
+
+  Dropdown: {
+    colorBgElevated: "#333",
+    colorText: "#fff",
   },
 };
 

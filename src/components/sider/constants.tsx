@@ -9,7 +9,7 @@ import { FaRegQuestionCircle } from "react-icons/fa";
 export const menuItems = [
   {
     id: 0,
-    key: ROUTES.home,
+    key: "sub1",
     name: "Dashboard",
     icon: <LuHome />,
   },

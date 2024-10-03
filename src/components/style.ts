@@ -1,18 +1,30 @@
 import { media } from "@/style";
-import { Layout, Menu } from "antd";
+import { Input, Layout, Menu } from "antd";
 import styled from "styled-components";
 
-export const LayoutHeader = styled(Layout.Header)`
-  /* align-items: center; */
-  /* align-content: center; */
-  padding: 10px !important;
+export const LayoutHeader = styled.header<{ isDarkMode: boolean }>`
+  background-color: ${({ isDarkMode }) => (isDarkMode ? "#333" : "#fff")};
+  color: ${({ isDarkMode }) => (isDarkMode ? "#fff" : "#000 !important")};
+  padding: 0 10px;
+  height: 64px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  /* 
-  ${media.md`
-    height: 78vh;
-  `} */
 `;
+
+export const SearchInput = styled(Input)<{ isDarkMode: boolean }>`
+  width: 320px !important;
+  background-color: ${({ isDarkMode }) =>
+    isDarkMode ? "#222" : "#fff"} !important;
+  color: ${({ isDarkMode }) => (isDarkMode ? "#fff" : "#000")} !important;
+  border: ${({ isDarkMode }) =>
+    isDarkMode ? "1px solid #555" : "1px solid #ccc"} !important;
+
+  ${media.md`
+    display: none !important;
+  `}
+`;
+
 export const LayoutSider = styled(Layout.Sider)<{ isDarkMode: boolean }>`
   /* background: #fff !important; */
 

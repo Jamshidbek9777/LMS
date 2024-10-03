@@ -2,13 +2,14 @@
 
 import { useAppStore } from "@/store";
 import { HeaderProps } from "@/types/components";
-import { Flex, Input, Button, Dropdown, MenuProps, Avatar, Switch } from "antd";
+import { Flex, Button, Dropdown, MenuProps, Avatar } from "antd";
 import { LuLogOut, LuUser } from "react-icons/lu";
 import { AlignLeft, AlignRight, Bell, Moon, SunMoon, User } from "lucide-react";
-import styled from "styled-components";
-import { media } from "@/style";
 import { Desc, UserName } from "./style";
 import { useTheme } from "@/services/antd";
+import { LayoutHeader, SearchInput } from "../style";
+import styled from "styled-components";
+import { media } from "@/style";
 
 export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
   const { setIsDrawer } = useAppStore();
@@ -51,18 +52,13 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
             type="text"
             icon={collapsed ? <AlignRight /> : <AlignLeft />}
             onClick={() => setCollapsed?.(!collapsed)}
-            style={{
-              color: isDarkMode ? "white" : "black",
-            }}
           />
+
           <Button
             className={isVisible ? "header-drawer" : ""}
             type="text"
             icon={collapsed ? <AlignRight /> : <AlignLeft />}
             onClick={handleOpenDrawer}
-            style={{
-              color: isDarkMode ? "white" : "black",
-            }}
           />
 
           <SearchInput
@@ -80,10 +76,10 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
           </Dropdown>
 
           <Button onClick={toggleTheme} type="text">
-            {isDarkMode ? <Moon /> : <SunMoon />}
+            {isDarkMode ? <SunMoon /> : <Moon />}
           </Button>
 
-          <Dropdown menu={{ items }}>
+          <UserDropdown menu={{ items }}>
             <Flex align="center" gap="small">
               <Flex vertical>
                 <UserName>Jamshidbek</UserName>
@@ -100,32 +96,14 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
                 }}
               />
             </Flex>
-          </Dropdown>
+          </UserDropdown>
         </Flex>
       </LayoutHeader>
     </>
   );
 };
 
-// Example of the styled component with dark mode support
-export const LayoutHeader = styled.header<{ isDarkMode: boolean }>`
-  background-color: ${({ isDarkMode }) => (isDarkMode ? "#333" : "#fff")};
-  color: ${({ isDarkMode }) => (isDarkMode ? "#fff" : "#000 !important")};
-  padding: 0 24px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const SearchInput = styled(Input)<{ isDarkMode: boolean }>`
-  width: 320px !important;
-  background-color: ${({ isDarkMode }) =>
-    isDarkMode ? "#222" : "#fff"} !important;
-  color: ${({ isDarkMode }) => (isDarkMode ? "#fff" : "#000")} !important;
-  border: ${({ isDarkMode }) =>
-    isDarkMode ? "1px solid #555" : "1px solid #ccc"} !important;
-
+export const UserDropdown = styled(Dropdown)`
   ${media.md`
     display: none !important;
   `}
