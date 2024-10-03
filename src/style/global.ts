@@ -164,7 +164,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .sider-desktop {
-    border-right: 1px solid #e2e8f0;
+    /* border-right: 1px solid #e2e8f0; */
 
     ${media.lg`
       display: none !important;

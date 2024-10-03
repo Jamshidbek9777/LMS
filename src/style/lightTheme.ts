@@ -13,7 +13,7 @@ const token: ThemeConfig["token"] = {
 const components: ThemeConfig["components"] = {
   Button: {
     controlHeight,
-    colorText: "#fff",
+    colorText: "#333",
     defaultHoverBg: "#F23E90",
     fontSize: 20,
     defaultColor: "#fff",
@@ -144,7 +144,7 @@ const components: ThemeConfig["components"] = {
   },
 };
 
-export const theme = {
+export const lightTheme = {
   token,
   components,
 };

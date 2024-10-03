@@ -18,13 +18,13 @@ export const ClientLayout = ({ children }: { children: React.ReactNode }) => {
     setIsDrawer(false);
   };
 
-  const isloginpage =
+  const isLoginPage =
     pathname === "/login" ||
     pathname === "/register" ||
     pathname === "/recover" ||
     pathname === "/otp";
 
-  return isloginpage ? (
+  return isLoginPage ? (
     <StyledComponentsRegistry>
       <AntdProvider>
         <Content>{children}</Content>
@@ -34,9 +34,10 @@ export const ClientLayout = ({ children }: { children: React.ReactNode }) => {
     <StyledComponentsRegistry>
       <AntdProvider>
         <AntdLayout hasSider>
-          <Sider collapsed={collapsed} isVisible />
+          <Sider collapsed={collapsed} isVisible isDarkMode />
           <AntdLayout>
             <Header
+              isDarkMode
               collapsed={collapsed}
               setCollapsed={setCollapsed}
               isVisible
@@ -52,7 +53,7 @@ export const ClientLayout = ({ children }: { children: React.ReactNode }) => {
           onClose={handleCloseDrawer}
           styles={{ body: { padding: 0 } }}
         >
-          <Sider />
+          <Sider isDarkMode />
         </Drawer>
       </AntdProvider>
     </StyledComponentsRegistry>

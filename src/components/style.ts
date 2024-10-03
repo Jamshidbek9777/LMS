@@ -13,13 +13,14 @@ export const LayoutHeader = styled(Layout.Header)`
     height: 78vh;
   `} */
 `;
-export const LayoutSider = styled(Layout.Sider)`
-  background: #fff !important;
+export const LayoutSider = styled(Layout.Sider)<{ isDarkMode: boolean }>`
+  /* background: #fff !important; */
+
   /* color: var(--white); */
 `;
 
 export const LayoutContent = styled(Layout.Content)<{ isloginpage: boolean }>`
-  height: ${({ isloginpage }) => (isloginpage ? "100vh" : "93vh")};
+  height: ${({ isloginpage }) => (isloginpage ? "100vh" : "93.3vh")};
   padding: ${({ isloginpage }) => (isloginpage ? "0" : "var(--base)")};
   overflow-y: auto;
 

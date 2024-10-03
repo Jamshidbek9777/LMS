@@ -1,3 +1,3 @@
 export { GlobalStyles } from "./global";
-export { theme } from "./theme";
+// export { theme } from "./lightTheme";
 export * from "./media";
