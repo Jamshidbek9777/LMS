@@ -2,11 +2,19 @@
 
 import { useAppStore } from "@/store";
 import { HeaderProps } from "@/types/components";
-import { Flex, Button, Dropdown, MenuProps, Avatar } from "antd";
-import { LuLogOut, LuUser } from "react-icons/lu";
-import { AlignLeft, AlignRight, Bell, Moon, SunMoon, User } from "lucide-react";
-import { Desc, UserName } from "./style";
 import { useTheme } from "@/services/antd";
+import { Flex, Button, Dropdown, MenuProps, Avatar } from "antd";
+import {
+  AlignLeft,
+  AlignRight,
+  Bell,
+  ChevronDown,
+  Moon,
+  SunMoon,
+  User,
+} from "lucide-react";
+import { LuLogOut, LuUser } from "react-icons/lu";
+import { Desc, UserName } from "./style";
 import { LayoutHeader, SearchInput } from "../style";
 import styled from "styled-components";
 import { media } from "@/style";
@@ -69,11 +77,15 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
           />
         </Flex>
 
-        <Flex gap={20} align="center">
+        <Flex gap={5} align="center">
           <Bell color={isdarkmode ? "white" : "black"} />
-          <Dropdown menu={{ items }}>
-            <h1 style={{ color: isdarkmode ? "white" : "black" }}>Uz</h1>
-          </Dropdown>
+          <Button type="text" style={{ fontSize: "16px" }}>
+            <UserDropdown menu={{ items }}>
+              <h1 style={{ color: isdarkmode ? "white" : "black" }}>
+                Uz <ChevronDown size={14} />
+              </h1>
+            </UserDropdown>
+          </Button>
 
           <Button onClick={toggleTheme} type="text">
             {isdarkmode ? <SunMoon /> : <Moon />}
@@ -82,8 +94,8 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
           <UserDropdown menu={{ items }}>
             <Flex align="center" gap="small">
               <Flex vertical>
-                <UserName>Jamshidbek</UserName>
-                <Desc>admin</Desc>
+                <UserName isdarkmode={isdarkmode}>Jamshidbek</UserName>
+                <Desc isdarkmode={isdarkmode}>admin</Desc>
               </Flex>
               <Avatar
                 src={""}
@@ -104,6 +116,9 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
 };
 
 export const UserDropdown = styled(Dropdown)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   ${media.md`
     display: none !important;
   `}

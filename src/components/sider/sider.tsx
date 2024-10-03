@@ -1,24 +1,12 @@
 "use client";
 
-// import Link from "next/link";
-import { Layout, Menu, MenuProps } from "antd";
-// import { menuItems } from "./constants";
-// import { AntMenu, } from "../style";
-import { Box } from "@/components";
-import { HeaderProps } from "@/types/components";
-import { useAppStore } from "@/store";
 import { useEffect, useState } from "react";
-import { useTheme } from "@/services/antd";
-import styled from "styled-components";
-
-import { ROUTES } from "@/components";
-
-import { LuHome } from "react-icons/lu";
-import { IoBookOutline } from "react-icons/io5";
-import { CiViewTable } from "react-icons/ci";
-import { GrPlan } from "react-icons/gr";
-import { FaRegQuestionCircle } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { useAppStore } from "@/store";
+import { useTheme } from "@/services/antd";
+import { HeaderProps } from "@/types/components";
+import { ROUTES, Box } from "@/components";
+import { Menu, MenuProps } from "antd";
 import {
   CircleGauge,
   ClipboardCheck,
@@ -29,14 +17,7 @@ import {
   ShieldCheck,
   UsersRound,
 } from "lucide-react";
-
-// const menuItemsTyped: MenuProps["items"] = menuItems.map(
-//   ({ id, key, icon, name }) => ({
-//     key: id.toString(),
-//     icon,
-//     label: <Link href={key}>{name}</Link>,
-//   })
-// );
+import { LayoutSider } from "../style";
 
 export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
   const menuItems: any = [
@@ -118,10 +99,9 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
       return null;
     };
 
-    // Find the selected item in the menu (including children)
     const selectedItem = findMenuItem(menuItems, e.key);
     if (selectedItem) {
-      router.push(selectedItem.key); // Navigate to the route using the item's key
+      router.push(selectedItem.key);
     }
   };
 
@@ -168,9 +148,3 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
     </LayoutSider>
   );
 };
-export const LayoutSider = styled(Layout.Sider)<{ isdarkmode: boolean }>`
-  background-color: ${({ isdarkmode }) =>
-    isdarkmode ? "#333" : "#ffffff"} !important;
-  color: ${({ isdarkmode }) => (isdarkmode ? "#ffffff" : "#000000")};
-  user-select: none;
-`;

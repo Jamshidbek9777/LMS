@@ -20,13 +20,12 @@ export const useTheme = () => useContext(ThemeContext);
 
 export const Antd = ({ children }: PropsWithChildren) => {
   const [isdarkmode, setIsDarkMode] = useState(false);
-  const [loading, setLoading] = useState(true); // New loading state
+  const [loading, setLoading] = useState(true);
 
-  // Set the theme based on localStorage when the component mounts
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
     setIsDarkMode(savedTheme === "dark");
-    setLoading(false); // Done loading once theme is set
+    setLoading(false);
   }, []);
 
   const toggleTheme = () => {
@@ -35,7 +34,6 @@ export const Antd = ({ children }: PropsWithChildren) => {
     localStorage.setItem("theme", newTheme);
   };
 
-  // Render nothing while the theme is loading
   if (loading) return null;
 
   return (

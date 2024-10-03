@@ -3,9 +3,11 @@
 import { PropsWithChildren } from "react";
 import { LayoutContent } from "../style";
 import { usePathname } from "next/navigation";
+import { useTheme } from "@/services/antd";
 
 export const Content = ({ children }: PropsWithChildren) => {
   const pathname = usePathname();
+  const { isdarkmode } = useTheme();
 
   const isloginpage =
     pathname === "/login" ||
@@ -13,5 +15,9 @@ export const Content = ({ children }: PropsWithChildren) => {
     pathname === "/recover" ||
     pathname === "/otp";
 
-  return <LayoutContent isloginpage={isloginpage}>{children}</LayoutContent>;
+  return (
+    <LayoutContent isdarkmode={isdarkmode} isloginpage={isloginpage}>
+      {children}
+    </LayoutContent>
+  );
 };
