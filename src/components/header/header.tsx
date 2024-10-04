@@ -30,10 +30,12 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
   const items: MenuProps["items"] = [
     {
       label: (
-        <UserFlexdrp vertical>
-          <UserName isdarkmode={isdarkmode}>Jamshidbek</UserName>
-          <Desc isdarkmode={isdarkmode}>admin</Desc>
-        </UserFlexdrp>
+        <>
+          <Flex vertical>
+            <UserName isdarkmode={isdarkmode}>Jamshidbek</UserName>
+            <Desc isdarkmode={isdarkmode}>admin</Desc>
+          </Flex>
+        </>
       ),
       key: "2",
       // onClick: handleLogOut,
@@ -79,7 +81,9 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
         </Flex>
 
         <Flex gap={5} align="center">
-          <Bell color={isdarkmode ? "white" : "black"} />
+          <Button type="text">
+            <Bell color={isdarkmode ? "white" : "black"} />
+          </Button>
           <Button type="text" style={{ fontSize: "16px" }}>
             <UserDropdown menu={{ items }}>
               <h1 style={{ color: isdarkmode ? "white" : "black" }}>
@@ -88,16 +92,12 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
             </UserDropdown>
           </Button>
 
-          <Button onClick={toggleTheme} type="text">
+          {/* <Button onClick={toggleTheme} type="text">
             {isdarkmode ? <SunMoon /> : <Moon />}
-          </Button>
+          </Button> */}
 
           <UserDropdown menu={{ items }}>
             <Flex align="center" gap="small">
-              <UserFlex vertical>
-                <UserName isdarkmode={isdarkmode}>Jamshidbek</UserName>
-                <Desc isdarkmode={isdarkmode}>admin</Desc>
-              </UserFlex>
               <Avatar
                 src={""}
                 icon={<LuUser size={20} />}

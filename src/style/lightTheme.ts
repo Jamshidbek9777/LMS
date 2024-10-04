@@ -105,8 +105,8 @@ const components: ThemeConfig["components"] = {
   },
 
   Switch: {
-    colorPrimary: "#65C466",
-    colorPrimaryHover: "#65C466",
+    colorPrimary: "#F23E79",
+    colorPrimaryHover: "#F23E79",
     handleSize: 27,
     trackHeight: 31,
     trackMinWidth: 51,

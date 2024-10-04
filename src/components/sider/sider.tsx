@@ -6,7 +6,7 @@ import { useAppStore } from "@/store";
 import { useTheme } from "@/services/antd";
 import { HeaderProps } from "@/types/components";
 import { ROUTES, Box } from "@/components";
-import { Menu, MenuProps, Tooltip } from "antd";
+import { Flex, Menu, MenuProps, Switch } from "antd";
 import {
   CircleGauge,
   ClipboardCheck,
@@ -18,7 +18,6 @@ import {
   UsersRound,
 } from "lucide-react";
 import { LayoutSider } from "../style";
-import styled from "styled-components";
 
 export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
   const menuItems: any = [
@@ -90,14 +89,18 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
     // },
   ];
 
-  const { isdarkmode } = useTheme();
-  const [current, setCurrent] = useState("0");
+  const { isdarkmode, toggleTheme } = useTheme();
+  const [current, setCurrent] = useState<string>(() => {
+    return localStorage.getItem("selectedMenuKey") || ROUTES.home;
+  });
+
   const { setIsDrawer } = useAppStore();
   const router = useRouter();
 
   const handleClick: MenuProps["onClick"] = (e) => {
     if (!isVisible) setIsDrawer(false);
     setCurrent(e.key);
+    localStorage.setItem("selectedMenuKey", e.key);
     const findMenuItem = (items: any[], key: string): any => {
       for (const item of items) {
         if (item.key === key) return item;
@@ -147,7 +150,7 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
       )}
 
       <Menu
-        style={{ height: "93.3vh" }}
+        style={{ height: "" }}
         mode="inline"
         selectedKeys={[current]}
         theme={isdarkmode ? "dark" : "light"}
@@ -155,6 +158,16 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
         onClick={handleClick}
         defaultOpenKeys={["Sozlamalar"]}
       />
+
+      <Flex
+        gap={80}
+        justify="center"
+        align="center"
+        style={{ marginTop: "50px" }}
+      >
+        {!collapsed && <p>Theme</p>}
+        <Switch checked={isdarkmode} onChange={toggleTheme} />
+      </Flex>
     </LayoutSider>
   );
 };

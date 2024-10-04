@@ -262,5 +262,22 @@ body.light-mode .ant-menu-item:hover {
 body.dark-mode .ant-menu-item:hover {
   background-color: #6a9fff;
 }
+/* ::-webkit-scrollbar {
+    width: 5px;  
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;  
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;  
+    border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;  /* Change color on hover 
+} */
+
 
 `;
