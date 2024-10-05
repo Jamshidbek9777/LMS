@@ -68,11 +68,16 @@ const components: ThemeConfig["components"] = {
   },
 
   Select: {
-    controlHeight,
+    controlHeight: 40,
     controlHeightLG,
     padding: 12,
     borderRadius: 12,
-    optionActiveBg: "#E7F6FD",
+    // colorBgContainer: "#4880FF",
+    // colorText: "white",
+    // colorBorder: "transparent",
+    // optionSelectedBg: "#4880FF",
+    // colorBgElevated: "#f8fafc",
+    colorTextPlaceholder: "black",
   },
 
   List: {
@@ -138,6 +143,9 @@ const components: ThemeConfig["components"] = {
     headerBg: "#fff",
     headerSplitColor: "#fff",
     headerColor: "#64748b",
+  },
+  Badge: {
+    indicatorHeight: 17,
   },
 };
 

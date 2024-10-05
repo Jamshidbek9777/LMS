@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { startTransition, useEffect, useState } from "react";
 import { useAppStore } from "@/store";
 import { useTheme } from "@/providers/antd";
 import { HeaderProps } from "@/types/components";
 import { ROUTES, Box } from "@/components";
-import { Flex, Menu, MenuProps, Switch } from "antd";
+import { Flex, Menu, MenuProps, Select, Switch } from "antd";
 import {
+  ChevronDown,
   CircleGauge,
   ClipboardCheck,
   LayoutList,
@@ -18,44 +18,50 @@ import {
   UsersRound,
 } from "lucide-react";
 import { LayoutSider } from "../style";
+import { usePathname, useRouter } from "@/navigation";
+import { locales } from "@/config";
+import { useLocale, useTranslations } from "next-intl";
+import styled from "styled-components";
+import { media } from "@/style";
 
 export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
+  const t = useTranslations("sidebar");
   const menuItems: any = [
     {
       id: 0,
       key: ROUTES.home,
-      label: "Dashboard",
+      label: `${t("labels.0")}`,
       icon: <CircleGauge size={18} />,
     },
     {
       id: 2,
       key: ROUTES.applications,
-      label: "Arizalar",
+      label: `${t("labels.1")}`,
       icon: <ClipboardCheck size={18} />,
     },
     {
       id: 3,
       key: ROUTES.groups,
-      label: "Guruhlar",
+      label: `${t("labels.2")}`,
       icon: <UsersRound size={18} />,
     },
     {
       id: 4,
       key: ROUTES.courses,
-      label: "Kurslar",
+      label: `${t("labels.3")}`,
       icon: <LayoutList size={18} />,
     },
     {
       id: 5,
       key: ROUTES.news,
-      label: "Yangiliklar",
+      label: `${t("labels.4")}`,
       icon: <Newspaper size={18} />,
     },
     {
       type: "divider",
     },
     {
-      label: "Sozlamalar",
+      label: `${t("labels.6")}`,
       icon: <Settings size={18} />,
       children: [
         {
@@ -88,15 +94,29 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
     //   icon: <Newspaper size={18} />,
     // },
   ];
-
   const { isdarkmode, toggleTheme } = useTheme();
   const [current, setCurrent] = useState<string>(() => {
     return localStorage.getItem("selectedMenuKey") || ROUTES.home;
   });
-
+  const locale = useLocale();
+  const pathname = usePathname();
   const { setIsDrawer } = useAppStore();
   const router = useRouter();
 
+  const handleChange = (locale: any) => {
+    startTransition(() => {
+      router.replace(pathname, { locale });
+    });
+  };
+  const localeNames: Record<string, string> = {
+    uz: "O'zbek",
+    ru: "Русский",
+    en: "English",
+  };
+  const langOptions = locales.map((locale) => ({
+    label: localeNames[locale], // Use the full name from the mapping
+    value: locale,
+  }));
   const handleClick: MenuProps["onClick"] = (e) => {
     if (!isVisible) setIsDrawer(false);
     setCurrent(e.key);
@@ -140,12 +160,16 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
       {isVisible && (
         <Box
           $justify="center"
-          $mb="var(--2xl)"
-          $mt="var(--ss)"
+          $align="center"
+          // $mb="var(--2xl)"
+          // $mt="var(--ss)"
           $width="100%"
-          style={{ color: isdarkmode ? "white" : "black" }}
+          $height="62px"
+          style={{
+            color: isdarkmode ? "white" : "black",
+          }}
         >
-          <h2>Logo</h2>
+          {collapsed ? <h4>Logo</h4> : <h2>Logo</h2>}
         </Box>
       )}
 
@@ -156,18 +180,42 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
         theme={isdarkmode ? "dark" : "light"}
         items={menuItems}
         onClick={handleClick}
-        defaultOpenKeys={["Sozlamalar"]}
+        defaultOpenKeys={[`${t("labels.6")}`]}
       />
+      <Flex vertical style={{ margin: "25px 27px" }}>
+        <ThemeFlex
+          justify={collapsed ? "center" : "space-between"}
+          align="center"
+        >
+          {!collapsed && <p>{t("labels.7")}: </p>}
+          <Switch checked={isdarkmode} onChange={toggleTheme} />
+        </ThemeFlex>
 
-      <Flex
-        gap={80}
-        justify="center"
-        align="center"
-        style={{ marginTop: "50px" }}
-      >
-        {!collapsed && <p>Theme</p>}
-        <Switch checked={isdarkmode} onChange={toggleTheme} />
+        <LangFlex justify="space-between" align="center">
+          {!collapsed && <p>{t("labels.8")} :</p>}
+          <Select
+            suffixIcon={
+              <ChevronDown style={{ color: isdarkmode ? "white" : "black" }} />
+            }
+            defaultValue={locale}
+            options={langOptions}
+            onChange={handleChange}
+          />
+        </LangFlex>
       </Flex>
     </LayoutSider>
   );
 };
+
+export const ThemeFlex = styled(Flex)`
+  ${media.lg`
+    display: none !important;
+  `}
+`;
+
+export const LangFlex = styled(Flex)`
+  display: none;
+  ${media.md`
+    display: flex !important;
+  `}
+`;

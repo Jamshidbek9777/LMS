@@ -1,9 +1,19 @@
 "use client";
 
+import { useLocale } from "next-intl";
+import { locales } from "@/config/i18n";
 import { useAppStore } from "@/store";
 import { HeaderProps } from "@/types/components";
 import { useTheme } from "@/providers/antd";
-import { Flex, Button, Dropdown, MenuProps, Avatar, Select } from "antd";
+import { LuLogOut } from "react-icons/lu";
+import { Desc, UserName } from "./style";
+import { LayoutHeader, SearchInput } from "../style";
+import styled from "styled-components";
+import { useTransition } from "react";
+import { usePathname, useRouter } from "@/navigation";
+import { Box } from "../box";
+import { media } from "@/style";
+import { Flex, Button, Dropdown, MenuProps, Avatar, Select, Badge } from "antd";
 import {
   AlignLeft,
   AlignRight,
@@ -12,24 +22,17 @@ import {
   Moon,
   SunMoon,
   User,
+  UserRound,
 } from "lucide-react";
-import { LuLogOut, LuUser } from "react-icons/lu";
-import { Desc, UserName } from "./style";
-import { LayoutHeader, SearchInput } from "../style";
-import styled from "styled-components";
-import { media } from "@/style";
-import { useLocale } from "next-intl";
-import { useTransition } from "react";
-import { usePathname, useRouter } from "@/navigation";
-import { locales } from "@/config/i18n";
 
 export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
   const { setIsDrawer } = useAppStore();
-  const { isdarkmode } = useTheme();
+  const { isdarkmode, toggleTheme } = useTheme();
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
+
   const handleOpenDrawer = () => {
     setIsDrawer(true);
   };
@@ -39,8 +42,8 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
     });
   };
   const localeNames: Record<string, string> = {
-    uz: "Uzbek",
-    ru: "Russian",
+    uz: "O'zbek",
+    ru: "Русский",
     en: "English",
   };
   const langOptions = locales.map((locale) => ({
@@ -101,35 +104,33 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
           />
         </Flex>
 
-        <Flex gap={5} align="center">
-          <Button type="text">
-            <Bell color={isdarkmode ? "white" : "black"} />
-          </Button>
-          {/* <Button type="text" style={{ fontSize: "16px" }}>
-            <UserDropdown menu={{ items }}>
-              <h1 style={{ color: isdarkmode ? "white" : "black" }}>
-                Uz <ChevronDown size={14} />
-              </h1>
-            </UserDropdown>
-          </Button> */}
-          <Select
-            variant="filled"
-            suffixIcon={<ChevronDown />}
+        <Flex gap={10} align="center">
+          <Box style={{ marginRight: "7px" }}>
+            <Badge count={5}>
+              <Bell color={isdarkmode ? "white" : "black"} />
+            </Badge>
+          </Box>
+          <HeaderSelect
+            variant="borderless"
+            suffixIcon={
+              <ChevronDown style={{ color: isdarkmode ? "white" : "black" }} />
+            }
             loading={isPending}
             defaultValue={locale}
             options={langOptions}
             onChange={handleChange}
           />
-
-          {/* <Button onClick={toggleTheme} type="text">
-            {isdarkmode ? <SunMoon /> : <Moon />}
-          </Button> */}
-
+          <ThemeFlex>
+            <Button onClick={toggleTheme} type="text">
+              {isdarkmode ? <SunMoon /> : <Moon />}
+            </Button>
+          </ThemeFlex>
           <UserDropdown menu={{ items }}>
             <Flex align="center" gap="small">
               <Avatar
+                size={40}
                 src={""}
-                icon={<LuUser size={20} />}
+                icon={<UserRound size={21} />}
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -162,6 +163,20 @@ export const UserFlex = styled(Flex)`
 export const UserFlexdrp = styled(Flex)`
   display: none;
   ${media.md`
+    display: block !important;
+  `}
+`;
+
+export const HeaderSelect = styled(Select)`
+  ${media.md`
+    display: none !important;
+  `}
+`;
+
+export const ThemeFlex = styled(Flex)`
+  display: none;
+
+  ${media.lg`
     display: block !important;
   `}
 `;

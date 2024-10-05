@@ -76,11 +76,17 @@ const components: ThemeConfig["components"] = {
   },
 
   Select: {
-    controlHeight,
+    controlHeight: 40,
     controlHeightLG,
     padding: 12,
     borderRadius: 12,
-    optionActiveBg: "#E7F6FD",
+    // optionActiveBg: "#E7F6FD",
+    colorBgContainer: "#4880FF",
+    colorBorder: "transparent",
+    colorText: "white",
+    optionSelectedBg: "#4880FF",
+    colorBgElevated: "#333",
+    colorTextPlaceholder: "white",
   },
 
   List: {
@@ -151,6 +157,9 @@ const components: ThemeConfig["components"] = {
   Dropdown: {
     colorBgElevated: "#333",
     colorText: "#fff",
+  },
+  Badge: {
+    indicatorHeight: 17,
   },
 };
 

@@ -278,6 +278,7 @@ body.dark-mode .ant-menu-item:hover {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #555;  /* Change color on hover 
 } */
-
-
+    .ant-select-selection-item {
+    margin-right: 6px; 
+  }
 `;

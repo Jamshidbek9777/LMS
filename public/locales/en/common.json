@@ -7,5 +7,18 @@
     "news": ["News"],
     "exams": ["Exams"],
     "settings": ["Admin settings", "Teacher settings"]
+  },
+  "sidebar": {
+    "labels": [
+      "Dashboard",
+      "Applications",
+      "Groups",
+      "Courses",
+      "News",
+      "Exams",
+      "Settings",
+      "Theme",
+      "Language"
+    ]
   }
 }

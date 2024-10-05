@@ -9,6 +9,7 @@ type LayoutProps = {
   params: { locale: string };
   children: ReactNode;
 };
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

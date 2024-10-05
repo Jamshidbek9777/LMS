@@ -7,5 +7,18 @@
     "news": ["Yangiliklar"],
     "exams": ["Imtihonlar"],
     "settings": ["Admin sozlamalari", "O'qituvchi sozlamalari"]
+  },
+  "sidebar": {
+    "labels": [
+      "Dashboard",
+      "Arizalar",
+      "Guruhlar",
+      "Yangiliklar",
+      "Kurslar",
+      "Imtihonlar",
+      "Sozlamalar",
+      "Mavzu",
+      "Til"
+    ]
   }
 }
