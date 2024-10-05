@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAppStore } from "@/store";
-import { useTheme } from "@/services/antd";
+import { useTheme } from "@/providers/antd";
 import { HeaderProps } from "@/types/components";
 import { ROUTES, Box } from "@/components";
 import { Flex, Menu, MenuProps, Switch } from "antd";
@@ -29,7 +29,7 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
     },
     {
       id: 2,
-      key: ROUTES.arizalar,
+      key: ROUTES.applications,
       label: "Arizalar",
       icon: <ClipboardCheck size={18} />,
     },

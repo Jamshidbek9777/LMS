@@ -1,0 +1,11 @@
+{
+  "meta": {
+    "home": ["LMS", "Learning management system"],
+    "applications": ["Applications"],
+    "courses": ["Courses"],
+    "groups": ["Groups"],
+    "news": ["News"],
+    "exams": ["Exams"],
+    "settings": ["Admin settings", "Teacher settings"]
+  }
+}

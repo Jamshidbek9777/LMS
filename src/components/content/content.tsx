@@ -3,7 +3,7 @@
 import { PropsWithChildren } from "react";
 import { LayoutContent } from "../style";
 import { usePathname } from "next/navigation";
-import { useTheme } from "@/services/antd";
+import { useTheme } from "@/providers/antd";
 
 export const Content = ({ children }: PropsWithChildren) => {
   const pathname = usePathname();

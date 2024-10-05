@@ -23,3 +23,16 @@ export interface IAppStore {
   //   setTransferModal: (isTransferModal: boolean) => void;
   //   setCashBackModal: (isCashBackModal: boolean) => void;
 }
+
+export interface TErrorLang {
+  ru: string;
+  en: string;
+}
+
+export type TError = {
+  status: number;
+  message: string;
+  errors: TErrorLang[];
+};
+
+export type TErrorParams = { error: TError | Error; locale: string };

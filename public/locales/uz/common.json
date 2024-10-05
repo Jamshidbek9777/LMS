@@ -1,0 +1,11 @@
+{
+  "meta": {
+    "home": ["LMS", "Ta'limni boshqarish tizimi"],
+    "applications": ["Arizalar"],
+    "courses": ["Kurslar"],
+    "groups": ["Guruhlar"],
+    "news": ["Yangiliklar"],
+    "exams": ["Imtihonlar"],
+    "settings": ["Admin sozlamalari", "O'qituvchi sozlamalari"]
+  }
+}
