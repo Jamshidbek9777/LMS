@@ -14,6 +14,7 @@ type Props = {
     | "start";
   $gap?: string;
   $height?: string;
+  $mr?: string;
   $m?: string;
   $ml?: string;
   $mb?: string;
@@ -35,6 +36,7 @@ export const Box = styled.div<Props>`
   gap: ${({ $gap }) => $gap};
   height: ${({ $height }) => $height};
   margin: ${({ $m }) => $m};
+  margin-right: ${({ $mr }) => $mr};
   margin-left: ${({ $ml }) => $ml};
   margin-bottom: ${({ $mb }) => $mb};
   margin-top: ${({ $mt }) => $mt};

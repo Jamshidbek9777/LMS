@@ -1,11 +1,17 @@
 "use client";
 
 import { startTransition, useEffect, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { useAppStore } from "@/store";
-import { useTheme } from "@/providers/antd";
+import { useTheme } from "@/providers";
+import { locales } from "@/config";
+import { usePathname, useRouter } from "@/navigation";
 import { HeaderProps } from "@/types/components";
 import { ROUTES, Box } from "@/components";
-import { Flex, Menu, MenuProps, Select, Switch } from "antd";
+import styled from "styled-components";
+import { Flex, Input, Menu, MenuProps, Select, Switch } from "antd";
+import { LayoutSider } from "../style";
+import { media } from "@/style";
 import {
   ChevronDown,
   CircleGauge,
@@ -17,15 +23,12 @@ import {
   ShieldCheck,
   UsersRound,
 } from "lucide-react";
-import { LayoutSider } from "../style";
-import { usePathname, useRouter } from "@/navigation";
-import { locales } from "@/config";
-import { useLocale, useTranslations } from "next-intl";
-import styled from "styled-components";
-import { media } from "@/style";
 
 export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
+  //lang
   const t = useTranslations("sidebar");
+
+  //sidebar items
   const menuItems: any = [
     {
       id: 0,
@@ -87,36 +90,36 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
     {
       type: "divider",
     },
-    // {
-    //   id: 5,
-    //   key: ROUTES.news,
-    //   label: "Yangiliklar",
-    //   icon: <Newspaper size={18} />,
-    // },
   ];
-  const { isdarkmode, toggleTheme } = useTheme();
-  const [current, setCurrent] = useState<string>(() => {
-    return localStorage.getItem("selectedMenuKey") || ROUTES.home;
-  });
+
+  const router = useRouter();
   const locale = useLocale();
   const pathname = usePathname();
   const { setIsDrawer } = useAppStore();
-  const router = useRouter();
+
+  const { isdarkmode, toggleTheme } = useTheme();
+
+  const [current, setCurrent] = useState<string>(() => {
+    return localStorage.getItem("selectedMenuKey") || ROUTES.home;
+  });
 
   const handleChange = (locale: any) => {
     startTransition(() => {
       router.replace(pathname, { locale });
     });
   };
+
   const localeNames: Record<string, string> = {
     uz: "O'zbek",
     ru: "Русский",
     en: "English",
   };
+
   const langOptions = locales.map((locale) => ({
-    label: localeNames[locale], // Use the full name from the mapping
+    label: localeNames[locale],
     value: locale,
   }));
+
   const handleClick: MenuProps["onClick"] = (e) => {
     if (!isVisible) setIsDrawer(false);
     setCurrent(e.key);
@@ -161,8 +164,6 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
         <Box
           $justify="center"
           $align="center"
-          // $mb="var(--2xl)"
-          // $mt="var(--ss)"
           $width="100%"
           $height="62px"
           style={{
@@ -172,7 +173,14 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
           {collapsed ? <h4>Logo</h4> : <h2>Logo</h2>}
         </Box>
       )}
-
+      <Box $m="10px 5px">
+        <SiderInput
+          variant="filled"
+          placeholder="Search"
+          size="large"
+          isdarkmode={isdarkmode}
+        />
+      </Box>
       <Menu
         style={{ height: "" }}
         mode="inline"
@@ -215,6 +223,17 @@ export const ThemeFlex = styled(Flex)`
 
 export const LangFlex = styled(Flex)`
   display: none;
+
+  ${media.md`
+    display: flex !important;
+  `}
+`;
+
+export const SiderInput = styled(Input.Search)<{ isdarkmode: boolean }>`
+  display: none;
+  border: ${({ isdarkmode }) =>
+    isdarkmode ? "1px solid #555" : "transparent"} !important;
+  color: ${({ isdarkmode }) => (isdarkmode ? "#fff" : "#000")} !important;
   ${media.md`
     display: flex !important;
   `}

@@ -16,10 +16,9 @@ export const LayoutHeader = styled.header<{ isdarkmode: boolean }>`
 `;
 
 export const SearchInput = styled(Input)<{ isdarkmode: boolean }>`
+  border-radius: 19px;
   border: ${({ isdarkmode }) =>
-    isdarkmode ? "1px solid #555" : "1px solid #ccc"} !important;
-  background-color: ${({ isdarkmode }) =>
-    isdarkmode ? "#222" : "#fff"} !important;
+    isdarkmode ? "1px solid #555" : "1px solid #D5D5D5"} !important;
   color: ${({ isdarkmode }) => (isdarkmode ? "#fff" : "#000")} !important;
   width: 320px !important;
 
@@ -42,7 +41,6 @@ export const LayoutContent = styled(Layout.Content)<{
 }>`
   color: ${({ isdarkmode }) => (isdarkmode ? "#fff" : "#000")} !important;
   height: ${({ isloginpage }) => (isloginpage ? "100vh" : "93.3vh")};
-  /* height: 20vh !important; */
   overflow-y: auto;
   padding: ${({ isloginpage }) => (isloginpage ? "0" : "var(--base)")};
 `;

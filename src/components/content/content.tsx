@@ -10,10 +10,10 @@ export const Content = ({ children }: PropsWithChildren) => {
   const { isdarkmode } = useTheme();
 
   const isloginpage =
-    pathname === "/login" ||
-    pathname === "/register" ||
-    pathname === "/recover" ||
-    pathname === "/otp";
+    pathname.endsWith("/login") ||
+    pathname.endsWith("/register") ||
+    pathname.endsWith("/recover") ||
+    pathname.endsWith("/otp");
 
   return (
     <LayoutContent isdarkmode={isdarkmode} isloginpage={isloginpage}>

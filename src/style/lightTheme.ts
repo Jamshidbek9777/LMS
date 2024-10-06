@@ -14,7 +14,7 @@ const components: ThemeConfig["components"] = {
   Button: {
     controlHeight,
     colorText: "#333",
-    defaultHoverBg: "#F23E90",
+    // defaultHoverBg: "#F23E90",
     fontSize: 20,
     defaultColor: "#fff",
     defaultBorderColor: "transparent",
@@ -46,6 +46,7 @@ const components: ThemeConfig["components"] = {
     colorTextDisabled: "#02053D",
     colorBorder: "transparent",
     borderRadius: 16,
+    hoverBorderColor: "red",
   },
 
   DatePicker: {
@@ -70,13 +71,8 @@ const components: ThemeConfig["components"] = {
   Select: {
     controlHeight: 40,
     controlHeightLG,
-    padding: 12,
+    padding: 0,
     borderRadius: 12,
-    // colorBgContainer: "#4880FF",
-    // colorText: "white",
-    // colorBorder: "transparent",
-    // optionSelectedBg: "#4880FF",
-    // colorBgElevated: "#f8fafc",
     colorTextPlaceholder: "black",
   },
 

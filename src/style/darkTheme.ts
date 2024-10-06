@@ -49,6 +49,7 @@ const components: ThemeConfig["components"] = {
     colorTextDisabled: "#02053D",
     colorBorder: "transparent",
     borderRadius: 16,
+    activeBg: "#333",
   },
 
   DatePicker: {
@@ -78,7 +79,7 @@ const components: ThemeConfig["components"] = {
   Select: {
     controlHeight: 40,
     controlHeightLG,
-    padding: 12,
+    padding: 0,
     borderRadius: 12,
     // optionActiveBg: "#E7F6FD",
     colorBgContainer: "#4880FF",
