@@ -14,8 +14,7 @@ import {
   Wrapper,
 } from "../style";
 import Link from "next/link";
-import api from "@/services/api/api";
-import { Endpoints } from "@/services/api/endpoints";
+import { api, Endpoints } from "@/services";
 import { useRouter } from "@/navigation";
 
 type FieldType = {
