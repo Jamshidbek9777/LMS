@@ -7,6 +7,7 @@ export const flexCenter = css`
 `;
 
 export const screenSizes: Record<string, number> = {
+  xxl: 1350,
   xl: 1200,
   lg: 991,
   md: 768,
