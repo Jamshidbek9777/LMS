@@ -18,7 +18,7 @@ export default function Home() {
   );
 }
 
-export const ContentWrapper = styled.div`
+const ContentWrapper = styled.div`
   background-color: white;
   min-height: 90vh;
   border-radius: 10px;
