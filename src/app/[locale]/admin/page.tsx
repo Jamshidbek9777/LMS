@@ -25,6 +25,6 @@ const ContentWrapper = styled.div`
   padding: 20px;
 `;
 
-export const StyledCard = styled(Card)`
+const StyledCard = styled(Card)`
   width: 250px;
 `;
