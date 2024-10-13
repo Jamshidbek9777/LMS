@@ -1,4 +1,8 @@
 "use client";
+
+import { useRouter } from "@/navigation";
+import { api, Endpoints } from "@/services";
+import Link from "next/link";
 import { Container } from "@/components";
 import type { FormProps } from "antd";
 import { Flex, Form } from "antd";
@@ -13,29 +17,64 @@ import {
   LoginTitle,
   Label,
 } from "../style";
-import Link from "next/link";
 
 type FieldType = {
-  email?: string;
+  username?: string;
   password?: string;
 };
 
-const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-  console.log("Success:", values);
-};
-
-const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
-
-const setVh = () => {
-  const vh = window.innerHeight * 0.01;
-  requestAnimationFrame(() => {
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  });
-};
-
 const Login = () => {
+  const router = useRouter();
+
+  const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
+    try {
+      const response = await api.post(Endpoints.SignIn, values);
+      const { access, refresh } = response.data;
+
+      localStorage.setItem("access-token", access);
+      localStorage.setItem("refresh-token", refresh);
+
+      const allUsersResponse = await api.get("/");
+      const allUsers = allUsersResponse.data;
+
+      const currentUser = allUsers.find(
+        (user: any) => user.username === values.username
+      );
+
+      if (currentUser) {
+        localStorage.setItem("user-roles", currentUser.user_roles);
+        console.log("User info and roles stored:", currentUser);
+      } else {
+        console.error("User not found with the given username.");
+      }
+
+      const role = localStorage.getItem("user-roles");
+
+      if (role == "admin") {
+        router.push("/admin/");
+      } else if (role == "teacher") {
+        router.push("/teacher/");
+      } else {
+        router.push("/student/");
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
+
+  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (
+    errorInfo
+  ) => {
+    console.log("Failed:", errorInfo);
+  };
+
+  const setVh = () => {
+    const vh = window.innerHeight * 0.01;
+    requestAnimationFrame(() => {
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    });
+  };
+
   useLayoutEffect(() => {
     setVh();
 
@@ -60,11 +99,13 @@ const Login = () => {
             layout="vertical"
           >
             <Form.Item<FieldType>
-              label={<Label>Email</Label>}
-              name="email"
-              rules={[{ required: true, message: "Iltimos email kiriting!" }]}
+              label={<Label>Username</Label>}
+              name="username"
+              rules={[
+                { required: true, message: "Iltimos username kiriting!" },
+              ]}
             >
-              <AntdInput placeholder="Email kiriting" />
+              <AntdInput placeholder="username kiriting" />
             </Form.Item>
 
             <Form.Item<FieldType>

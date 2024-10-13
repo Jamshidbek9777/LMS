@@ -32,31 +32,31 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
   const menuItems: any = [
     {
       id: 0,
-      key: ROUTES.home,
+      key: ROUTES.adminDashboard,
       label: `${t("labels.0")}`,
       icon: <CircleGauge size={18} />,
     },
     {
       id: 2,
-      key: ROUTES.applications,
+      key: ROUTES.adminApplications,
       label: `${t("labels.1")}`,
       icon: <ClipboardCheck size={18} />,
     },
     {
       id: 3,
-      key: ROUTES.groups,
+      key: ROUTES.adminGroups,
       label: `${t("labels.2")}`,
       icon: <UsersRound size={18} />,
     },
     {
       id: 4,
-      key: ROUTES.courses,
+      key: ROUTES.adminCourses,
       label: `${t("labels.3")}`,
       icon: <LayoutList size={18} />,
     },
     {
       id: 5,
-      key: ROUTES.news,
+      key: ROUTES.adminNews,
       label: `${t("labels.4")}`,
       icon: <Newspaper size={18} />,
     },
@@ -81,8 +81,8 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
         },
         {
           id: 3,
-          key: ROUTES.subjects,
-          label: "Admin",
+          key: ROUTES.studentSettings,
+          label: "Student",
           icon: <ShieldCheck size={18} />,
         },
       ],
@@ -165,7 +165,7 @@ export const Sider = ({ collapsed, isVisible }: HeaderProps) => {
           $justify="center"
           $align="center"
           $width="100%"
-          $height="62px"
+          $height="53px"
           style={{
             color: isdarkmode ? "white" : "black",
           }}

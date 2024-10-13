@@ -3,7 +3,7 @@ import { media } from "./media";
 import { pxToRem } from "@/lib";
 
 export const GlobalStyles = createGlobalStyle`
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
   :root {
     --body: #F8FAFC;
@@ -35,6 +35,7 @@ export const GlobalStyles = createGlobalStyle`
   * {
     box-sizing: border-box;
     outline: none;
+     font-family: 'Inter', sans-serif !important;
   }
 
   html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, img, ul, li, ol, a {
@@ -45,6 +46,7 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: normal;
     vertical-align: baseline;
     background: transparent;
+    font-family: 'Inter', sans-serif;
   }
 
   body {

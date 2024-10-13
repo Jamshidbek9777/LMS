@@ -14,20 +14,16 @@ import {
   Wrapper,
 } from "../style";
 import Link from "next/link";
+import api from "@/services/api/api";
+import { Endpoints } from "@/services/api/endpoints";
+import { useRouter } from "@/navigation";
 
 type FieldType = {
-  fullname?: string;
+  username?: string;
   email?: string;
   password?: string;
 };
 
-const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-  console.log("Success:", values);
-};
-
-const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
 const setVh = () => {
   const vh = window.innerHeight * 0.01;
   requestAnimationFrame(() => {
@@ -36,6 +32,46 @@ const setVh = () => {
 };
 
 const Register = () => {
+  const router = useRouter();
+  const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
+    try {
+      const response = await api.post(Endpoints.SignUp, values);
+      const { access, refresh } = response.data;
+
+      localStorage.setItem("access-token", access);
+      localStorage.setItem("refresh-token", refresh);
+
+      const allUsersResponse = await api.get("/");
+      const allUsers = allUsersResponse.data;
+
+      const currentUser = allUsers.find(
+        (user: any) => user.username === values.username
+      );
+
+      if (currentUser) {
+        localStorage.setItem("user-roles", currentUser.user_roles);
+        console.log("User info and roles stored:", currentUser);
+      } else {
+        console.error("User not found with the given username.");
+      }
+      const role = localStorage.getItem("user-roles");
+
+      if (role == "admin") {
+        router.push("/admin/");
+      } else if (role == "teacher") {
+        router.push("/teacher/");
+      } else {
+        router.push("/student/");
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
+  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (
+    errorInfo
+  ) => {
+    console.log("Failed:", errorInfo);
+  };
   useLayoutEffect(() => {
     setVh();
 
@@ -62,11 +98,11 @@ const Register = () => {
           >
             <Form.Item<FieldType>
               label={<Label>Ism va familiya</Label>}
-              name="fullname"
+              name="username"
               rules={[
                 {
                   required: true,
-                  message: "Iltimos to'liq ismingizni kiriting!",
+                  message: "Iltimos to'liq username kiriting!",
                 },
               ]}
             >

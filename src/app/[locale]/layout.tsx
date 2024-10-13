@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ClientLayout } from "@/components";
 import { ReactNode } from "react";
-import { NextIntlProvider } from "@/providers";
+import { NextIntlProvider, QueryProvider } from "@/providers";
 
 type LayoutProps = {
   params: { locale: string };
@@ -23,11 +23,13 @@ export default function RootLayout({
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <NextIntlProvider locale={locale}>
-          <AntdRegistry>
-            <ClientLayout>{children}</ClientLayout>
-          </AntdRegistry>
-        </NextIntlProvider>
+        <QueryProvider locale={locale}>
+          <NextIntlProvider locale={locale}>
+            <AntdRegistry>
+              <ClientLayout>{children}</ClientLayout>
+            </AntdRegistry>
+          </NextIntlProvider>
+        </QueryProvider>
       </body>
     </html>
   );
