@@ -1,6 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
+import { deleteCookie } from "cookies-next";
 import { useLocale } from "next-intl";
 import { locales } from "@/config/i18n";
 import { useAppStore } from "@/store";
@@ -34,9 +35,15 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
     setIsDrawer(true);
   };
   const handleLogout = () => {
-    localStorage.removeItem("access-token");
-    localStorage.removeItem("refresh-token");
+    // Remove tokens from cookies
+    deleteCookie("access-token");
+    deleteCookie("refresh-token");
+    deleteCookie("user-roles");
+
+    // Redirect to the login page
+    router.replace("/login"); // Replace to ensure no back navigation to protected pages
   };
+
   const handleChange = (locale: any) => {
     startTransition(() => {
       router.replace(pathname, { locale });

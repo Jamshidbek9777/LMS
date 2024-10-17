@@ -23,10 +23,8 @@ export function withPermissionMiddleware(
     const isPublicPage = isAuthPage || pathname.includes("/404");
 
     if (!accessToken && !isPublicPage) {
-      const returnTo = encodeURIComponent(req.url);
-      return NextResponse.redirect(
-        new URL(`/${currentLocale}/login?returnTo=${returnTo}`, req.url)
-      );
+      //   const returnTo = encodeURIComponent(req.url);
+      return NextResponse.redirect(new URL(`/${currentLocale}/login`, req.url));
     }
 
     if (accessToken && isAuthPage) {
