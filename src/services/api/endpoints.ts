@@ -1,5 +1,5 @@
 export enum Endpoints {
-  SignIn = "token/",
+  SignIn = "login/",
   SignUp = "user/",
   GetMe = "dj-rest-auth/user/",
   GetUsers = "/",

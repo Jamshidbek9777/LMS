@@ -5,8 +5,9 @@ import { api, Endpoints } from "@/services";
 import Link from "next/link";
 import { Container } from "@/components";
 import type { FormProps } from "antd";
-import { Flex, Form } from "antd";
+import { Flex, Form, message } from "antd";
 import { useLayoutEffect } from "react";
+import Cookies from "js-cookie";
 import {
   AntdInputPassword,
   StyledForm,
@@ -31,8 +32,8 @@ const Login = () => {
       const response = await api.post(Endpoints.SignIn, values);
       const { access, refresh } = response.data;
 
-      localStorage.setItem("access-token", access);
-      localStorage.setItem("refresh-token", refresh);
+      Cookies.set("access-token", access);
+      Cookies.set("refresh-token", refresh);
 
       const allUsersResponse = await api.get("/");
       const allUsers = allUsersResponse.data;
@@ -41,23 +42,28 @@ const Login = () => {
         (user: any) => user.username === values.username
       );
 
-      if (currentUser) {
-        localStorage.setItem("user-roles", currentUser.user_roles);
-        console.log("User info and roles stored:", currentUser);
-      } else {
-        console.error("User not found with the given username.");
-      }
+      message.success("Successfully login");
 
-      const role = localStorage.getItem("user-roles");
+      Cookies.set("user-roles", currentUser.user_roles);
 
-      if (role == "admin") {
+      const role = Cookies.get("user-roles");
+
+      if (role === "admin") {
         router.push("/admin/");
-      } else if (role == "teacher") {
+      } else if (role === "teacher") {
         router.push("/teacher/");
       } else {
         router.push("/student/");
       }
-    } catch (error) {
+    } catch (error: any) {
+      if (
+        error.response &&
+        (error.response.status === 400 || error.response.status === 401)
+      ) {
+        message.error("Invalid username or password. Please try again.");
+      } else {
+        message.error("Login failed. Please try again later.");
+      }
       console.error("Login failed:", error);
     }
   };

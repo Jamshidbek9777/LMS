@@ -33,7 +33,10 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
   const handleOpenDrawer = () => {
     setIsDrawer(true);
   };
-
+  const handleLogout = () => {
+    localStorage.removeItem("access-token");
+    localStorage.removeItem("refresh-token");
+  };
   const handleChange = (locale: any) => {
     startTransition(() => {
       router.replace(pathname, { locale });
@@ -62,7 +65,7 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
         </>
       ),
       key: "2",
-      // onClick: handleLogOut,
+      // onClick: handleLogout,
     },
     {
       type: "divider",
@@ -74,7 +77,7 @@ export const Header = ({ collapsed, setCollapsed, isVisible }: HeaderProps) => {
         </Flex>
       ),
       key: "3",
-      // onClick: handleLogOut,
+      onClick: handleLogout,
     },
   ];
 

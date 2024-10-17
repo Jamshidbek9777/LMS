@@ -1,7 +1,7 @@
 "use client";
 import { Container } from "@/components";
 import type { FormProps } from "antd";
-import { Flex, Form } from "antd";
+import { Flex, Form, message } from "antd";
 import { useLayoutEffect } from "react";
 import {
   AntdInput,
@@ -35,33 +35,8 @@ const Register = () => {
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     try {
       const response = await api.post(Endpoints.SignUp, values);
-      const { access, refresh } = response.data;
-
-      localStorage.setItem("access-token", access);
-      localStorage.setItem("refresh-token", refresh);
-
-      const allUsersResponse = await api.get("/");
-      const allUsers = allUsersResponse.data;
-
-      const currentUser = allUsers.find(
-        (user: any) => user.username === values.username
-      );
-
-      if (currentUser) {
-        localStorage.setItem("user-roles", currentUser.user_roles);
-        console.log("User info and roles stored:", currentUser);
-      } else {
-        console.error("User not found with the given username.");
-      }
-      const role = localStorage.getItem("user-roles");
-
-      if (role == "admin") {
-        router.push("/admin/");
-      } else if (role == "teacher") {
-        router.push("/teacher/");
-      } else {
-        router.push("/student/");
-      }
+      message.success("Succesfully registered, please login");
+      router.push("/login");
     } catch (error) {
       console.error("Login failed:", error);
     }
