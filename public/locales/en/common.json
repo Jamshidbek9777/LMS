@@ -1,15 +1,31 @@
 {
   "meta": {
-    "home": ["LMS", "Learning management system"],
-    "applications": ["Applications"],
-    "courses": ["Courses"],
-    "groups": ["Groups"],
-    "news": ["News"],
-    "exams": ["Exams"],
-    "settings": ["Admin settings", "Teacher settings"]
+    "home": [
+      "LMS",
+      "Learning management system"
+    ],
+    "applications": [
+      "Applications"
+    ],
+    "courses": [
+      "Courses"
+    ],
+    "groups": [
+      "Groups"
+    ],
+    "news": [
+      "News"
+    ],
+    "exams": [
+      "Exams"
+    ],
+    "settings": [
+      "Admin settings",
+      "Teacher settings"
+    ]
   },
   "sidebar": {
-    "labels": [
+    "adminLabels": [
       "Dashboard",
       "Applications",
       "Groups",
@@ -17,8 +33,29 @@
       "News",
       "Exams",
       "Settings",
+      "Admin",
+      "Teacher",
+      "Student",
       "Theme",
       "Language"
+    ],
+    "teacherLabels": [
+      "Dashboard",
+      "Assigments",
+      "Table",
+      "Exam",
+      "Groups",
+      "Absence",
+      "News"
+    ],
+    "studentLabels": [
+      "Dashboard",
+      "Assigments",
+      "Table",
+      "Exam",
+      "Absence",
+      "Payment",
+      "News"
     ]
   }
 }

@@ -108,7 +108,7 @@ const Register = () => {
           <Helper>
             Hisobingiz bormi ?{" "}
             <Link
-              style={{ color: "#fff", borderBottom: "1px solid white" }}
+              style={{ color: "#00b4d7", borderBottom: "1px solid #00b4d7" }}
               href={"/login"}
             >
               Kirish

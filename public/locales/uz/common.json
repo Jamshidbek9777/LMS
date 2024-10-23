@@ -1,15 +1,31 @@
 {
   "meta": {
-    "home": ["LMS", "Ta'limni boshqarish tizimi"],
-    "applications": ["Arizalar"],
-    "courses": ["Kurslar"],
-    "groups": ["Guruhlar"],
-    "news": ["Yangiliklar"],
-    "exams": ["Imtihonlar"],
-    "settings": ["Admin sozlamalari", "O'qituvchi sozlamalari"]
+    "home": [
+      "LMS",
+      "Ta'limni boshqarish tizimi"
+    ],
+    "applications": [
+      "Arizalar"
+    ],
+    "courses": [
+      "Kurslar"
+    ],
+    "groups": [
+      "Guruhlar"
+    ],
+    "news": [
+      "Yangiliklar"
+    ],
+    "exams": [
+      "Imtihonlar"
+    ],
+    "settings": [
+      "Admin sozlamalari",
+      "O'qituvchi sozlamalari"
+    ]
   },
   "sidebar": {
-    "labels": [
+    "adminLabels": [
       "Dashboard",
       "Arizalar",
       "Guruhlar",
@@ -17,8 +33,29 @@
       "Kurslar",
       "Imtihonlar",
       "Sozlamalar",
+      "Admin",
+      "O'qituvchi",
+      "O'quvchi",
       "Mavzu",
       "Til"
+    ],
+    "teacherLabels": [
+      "Dashboard",
+      "Vazifalar",
+      "Jadval",
+      "Imtihonlar",
+      "Guruhlar",
+      "Davomat",
+      "Yangiliklar"
+    ],
+    "studentLabels": [
+      "Dashboard",
+      "Vazifalar",
+      "Jadval",
+      "Imtihonlar",
+      "Davomat",
+      "To'lov",
+      "Yangiliklar"
     ]
   }
 }

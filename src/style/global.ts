@@ -221,9 +221,9 @@ export const GlobalStyles = createGlobalStyle`
 
 
 ::-webkit-input-placeholder {
-  color: #ABABAB !important;
+  color: #d1cfcf !important;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 500;
 
   ${media.sm`
     font-size: 12px

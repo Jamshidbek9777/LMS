@@ -18,7 +18,7 @@ const components: ThemeConfig["components"] = {
     fontSize: 20,
     defaultColor: "#fff",
     defaultBorderColor: "transparent",
-    defaultBg: "#F23E79",
+    defaultBg: "#00b4d7",
     borderRadius: 16,
     borderRadiusLG: 16,
   },
@@ -44,9 +44,9 @@ const components: ThemeConfig["components"] = {
     // controlHeightLG
     // controlHeight,
     colorTextDisabled: "#02053D",
-    colorBorder: "transparent",
+    colorBorder: "#00b4d7",
     borderRadius: 16,
-    hoverBorderColor: "red",
+    // hoverBorderColor: "red",
   },
 
   DatePicker: {

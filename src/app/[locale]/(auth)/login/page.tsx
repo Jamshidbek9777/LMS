@@ -18,6 +18,7 @@ import {
   LoginTitle,
   Label,
 } from "../style";
+import styled from "styled-components";
 
 type FieldType = {
   username?: string;
@@ -45,6 +46,7 @@ const Login = () => {
       message.success("Successfully login");
 
       Cookies.set("user-roles", currentUser.user_roles);
+      Cookies.set("username", currentUser.username);
 
       const role = Cookies.get("user-roles");
 
@@ -105,13 +107,13 @@ const Login = () => {
             layout="vertical"
           >
             <Form.Item<FieldType>
-              label={<Label>Username</Label>}
+              label={<Label>Login</Label>}
               name="username"
               rules={[
-                { required: true, message: "Iltimos username kiriting!" },
+                { required: true, message: "Iltimos login kiriting!" },
               ]}
             >
-              <AntdInput placeholder="username kiriting" />
+              <AntdInput placeholder="Login kiriting" />
             </Form.Item>
 
             <Form.Item<FieldType>
@@ -131,8 +133,8 @@ const Login = () => {
               <Link
                 href={"/recover"}
                 style={{
-                  color: "#fff",
-                  borderBottom: "1px solid white",
+                  color: "#00b4d7",
+                  borderBottom: "1px solid #00b4d7",
                 }}
               >
                 Parolni unutdingizmi?
@@ -148,7 +150,7 @@ const Login = () => {
           <Helper>
             Hisobingiz yo&#39;qmi ?{" "}
             <Link
-              style={{ color: "#fff", borderBottom: "1px solid white" }}
+              style={{ color: "#00b4d7", borderBottom: "1px solid #00b4d7" }}
               href={"/register"}
             >
               Ro&#39;yxatdan o&#39;tish
@@ -161,3 +163,7 @@ const Login = () => {
 };
 
 export default Login;
+
+// const MainFlex = styled(Flex)`
+//   backdrop-filter: blur(10px);
+// `;

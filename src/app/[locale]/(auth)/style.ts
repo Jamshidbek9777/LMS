@@ -10,16 +10,19 @@ type FieldType = {
 };
 export const Wrapper = styled.div`
   align-items: center;
-  background-color: #4880ff;
+  background-image: url("/images/main-bg.jpg");
+  background-position: center;
   display: flex;
-  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: calc(var(--vh, 1vh)* 100);
+  //height: 100vh;
+  overflow: hidden;
   justify-content: center;
 `;
 
 export const LoginTitle = styled.h1`
   font-size: 48px;
   font-weight: 700;
-  color: #fff;
+  color: #00b4d7;
   margin-bottom: 40px;
 
   ${media.sm`
@@ -32,7 +35,7 @@ export const LoginTitle = styled.h1`
 `;
 
 export const Label = styled.p`
-  color: #fff;
+  color: #00b4d7;
   font-weight: 700;
   font-size: 18px;
   margin-top: 5px;
@@ -63,7 +66,7 @@ export const AntdInputPassword = styled(Input.Password)`
 `;
 
 export const Helper = styled.p`
-  color: #fff;
+  color: #00b4d7;
   margin-top: 10px;
 
   ${media.sm`
