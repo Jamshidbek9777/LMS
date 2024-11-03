@@ -13,7 +13,8 @@ export const Wrapper = styled.div`
   background-image: url("/images/main-bg.jpg");
   background-position: center;
   display: flex;
-  min-height: calc(var(--vh, 1vh)* 100);
+  min-height: calc(var(--vh, 1vh) * 100);
+  background-size: cover;
   //height: 100vh;
   overflow: hidden;
   justify-content: center;
